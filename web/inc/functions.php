@@ -63,3 +63,4 @@ function redirect_with_message(string $message, string $type=FLASH_ERROR, string
     header("Location: $location", true, 303);
     exit;
 }
+?>

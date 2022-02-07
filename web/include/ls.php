@@ -12,7 +12,15 @@ class ls
             echo "<H1>attenzione la directory di origine gli nso non esiste controllare il config.ini voce oripath</h1>";
         }
         //var_dump($ini_array);
-        $oripath = glob($ini_array['percorsi']['oripath'] . $ext);
+        $ext = $ini_array['EXTENSION'];
+        $search = '{';
+        foreach ($ext['ext'] as $value) {
+            $search = $search  . str_replace('.', '', $value) . ',';
+        }
+        $search = $search . '}';
+        $search = str_replace(',}', '}', $search);
+        $oripath = glob('.\\' . $ini_array['percorsi']['oripath'] . '*.' . $search, GLOB_BRACE);
+        // glob($ini_array['percorsi']['oripath'] . $ext);
         //var_dump($oripath);
         //var_dump($ini_array['percorsi']['oripath']);
         $directory = new DirectoryIterator(dirname(__FILE__));
@@ -30,12 +38,12 @@ class ls
 
         $res = [];
         if ($dir == 1) {
-            $lpath = glob($di . $ini_array['percorsi']['toelab'] . $ext);
+            $lpath = glob($di . $ini_array['percorsi']['toelab'] . '*.' . $search, GLOB_BRACE);
             foreach ($lpath as $f) {
                 array_push($res, basename($f));
             }
         } else {
-            $lpath = glob($di . $ini_array['percorsi']['procfiles'] . $ext);
+            $lpath = glob($di . $ini_array['percorsi']['procfiles'] . '*.' . $search, GLOB_BRACE);
 
             foreach ($lpath as $f) {
                 array_push($res, basename($f));
@@ -118,6 +126,7 @@ class ls
         $ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
 
         $ext = $ini_array['Parametri']['estensione'];
+        $sep=$ini_array['Parametri']['sep'];
         $f = $file;
         ((is_null($ind) == true) ? $ind = 1 : $ind);
         $directory = new DirectoryIterator(dirname(__FILE__));
@@ -141,16 +150,19 @@ class ls
                 $dt1 =     strtotime($data->Order->Children("cbc", TRUE)->IssueDate);
                 $dt = date("d/m/Y", $dt1);
 
-                $row = $row . "|" . $dt . "|" . $ind . "|" . $data->Order->Children("cac", TRUE)
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->Children("cac", TRUE)
                     ->BuyerCustomerParty->Children("cac", TRUE)->Party
                     ->Children("cac", TRUE)->PartyTaxScheme->Children("cbc", TRUE)->CompanyID;
-                $row = $row . "|"   . $dt;
-                $row = $row .   "|" . $data->Order->Children("cbc", TRUE)->ID . "||||" . PHP_EOL;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->Children("cbc", TRUE)->ID .$sep.$sep.$sep.$sep 
+                . PHP_EOL;
                 foreach ($data->Order->Children("cac", TRUE)->OrderLine as $line) {
-                    $row = $row . "RIG" . "|"   . $dt . "|{$ind}||||";
-                    $row = $row . $line->Children("cac", true)->LineItem->children("cac", true)->Item->children("cac", true)->BuyersItemIdentification->children("cbc", true)->ID . "||";
+                    $row = $row . "RIG" . $sep   . $dt .$sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->Children("cac", true)->LineItem->children("cac", true)->Item->
+                    children("cac", true)->BuyersItemIdentification->children("cbc", true)->ID . $sep.$sep;
                     $row = $row . $line->Children("cac", true)->LineItem->children("cbc", true)->Quantity;
-                    $row = $row . "|" . $line->Children("cac", true)->LineItem->children("cac", true)->Price->children("cbc", true)->PriceAmount .
+                    $row = $row . $sep . $line->Children("cac", true)->LineItem->children("cac", true)
+                    ->Price->children("cbc", true)->PriceAmount .
                         PHP_EOL;
                 }
             } catch (Exception $var) {
@@ -179,17 +191,17 @@ class ls
                 $dt1 =     strtotime($data->Order->IssueDate);
                 $dt = date("d/m/Y", $dt1);
 
-                $row = $row . "|" . $dt . "|" . $ind . "|" . $data->Order->BuyerCustomerParty->Party
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
                     ->PartyTaxScheme->CompanyID;
-                $row = $row . "|"   . $dt;
-                $row = $row .   "|" . $data->Order->ID . "||||" . PHP_EOL;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
                 //   echo '<tr><td>' . $row . '</tr></td>';
                 foreach ($data->Order->OrderLine as $line) {
 
-                    $row = $row . "RIG" . "|"   . $dt . "|{$ind}||||";
-                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . "||";
+                    $row = $row . "RIG" . "$sep"   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
                     $row = $row . $line->LineItem->Quantity;
-                    $row = $row . "|" . $line->LineItem->Price->PriceAmount . PHP_EOL;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
                 }
 
 
@@ -222,17 +234,17 @@ class ls
                 $dt1 =     strtotime($data->Order->IssueDate);
                 $dt = date("d/m/Y", $dt1);
 
-                $row = $row . "|" . $dt . "|" . $ind . "|" . $data->Order->BuyerCustomerParty->Party
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
                     ->PartyTaxScheme->CompanyID;
-                $row = $row . "|"   . $dt;
-                $row = $row .   "|" . $data->Order->ID . "||||" . PHP_EOL;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
                 //   echo '<tr><td>' . $row . '</tr></td>';
                 foreach ($data->Order->OrderLine as $line) {
 
-                    $row = $row . "RIG" . "|"   . $dt . "|{$ind}||||";
-                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . "||";
+                    $row = $row . "RIG" . $sep   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
                     $row = $row . $line->LineItem->Quantity;
-                    $row = $row . "|" . $line->LineItem->Price->PriceAmount . PHP_EOL;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
                 }
 
 
@@ -291,17 +303,17 @@ class ls
                 $dt1 =     strtotime($data->Order->IssueDate);
                 $dt = date("d/m/Y", $dt1);
 
-                $row = $row . "|" . $dt . "|" . $ind . "|" . $data->Order->BuyerCustomerParty->Party
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
                     ->PartyTaxScheme->CompanyID;
-                $row = $row . "|"   . $dt;
-                $row = $row .   "|" . $data->Order->ID . "||||" . PHP_EOL;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
                 //   echo '<tr><td>' . $row . '</tr></td>';
                 foreach ($data->Order->OrderLine as $line) {
 
-                    $row = $row . "RIG" . "|"   . $dt . "|{$ind}||||";
-                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . "||";
+                    $row = $row . "RIG" . $sep   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
                     $row = $row . $line->LineItem->Quantity;
-                    $row = $row . "|" . $line->LineItem->Price->PriceAmount . PHP_EOL;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
                 }
 
 
@@ -319,6 +331,7 @@ class ls
             }
         }
     }
+
 
 
 

@@ -4,7 +4,8 @@
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
 $ls= new ls();
-
+$ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+$ext=$ini_array['Parametri']['estensione'];
 echo <<<EOT
 <style>
 /*the following html and body rule sets are required only if using a % width or height*/
@@ -199,9 +200,21 @@ EOT;
 <td style="width: 301px; height: 116.188px;">Seleziona file da caricare   
   <form enctype="multipart/form-data" action="upload.php" method="post">
         <div>
-           
-            <input type="file" id="file" name="file" accept="text/xml"/>
-        </div>
+<?php
+ echo
+ <<<EOT
+ <input type="file" id="file" name="file[]" multiple accept=".{$ext}" />
+EOT;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    $rr= "accept='.{$ext}";
+    ?>
+          </div>
         <div>
             <button type="submit">Upload</button>
         </div>
