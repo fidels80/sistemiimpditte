@@ -1,10 +1,21 @@
-<?php 
- //session_start();
-//require_once __DIR__ . '/inc/flash.php';
+<?php
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
-$ls= new ls();
+$ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+$ls = new ls();
+$ls->localelab();
+$content = "";
+$p = new ProgressBar();
 
+$eleb = ($ls->elefile(1));
+$eleb2 = ($ls->elefile(2));
+//var_dump($eleb);
+//var_dump($eleb2);
+$elef = (array_diff($eleb, $eleb2));
+$f = 0;
+$i = 0;
+$size = 100;
+$conta = 100 / ((count($elef) == 0) ? 1 : count($elef));
 echo <<<EOT
 <style>
 /*the following html and body rule sets are required only if using a % width or height*/
@@ -27,8 +38,8 @@ body {
   vertical-align: middle;
   overflow: hidden;
   width: auto; /*if you want a fixed width, set it here, else set to auto*/
-  min-width: 100% 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
-  height: 488px/*100%*/; /*set table height here; can be fixed value or %*/
+  min-width: 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
+  height: 188px/*100%*/; /*set table height here; can be fixed value or %*/
   min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
   font-family: Verdana, Tahoma, sans-serif;
   font-size: 15px;
@@ -138,31 +149,24 @@ body {
 .scrollingtable > div > div > table > tbody:last-of-type > tr:last-child > * {border-bottom: none;}
 .scrollingtable > div > div > table > tbody > tr:nth-child(even) {background: gainsboro;} /*alternate row color*/
 .scrollingtable > div > div > table > tbody > tr > * + * {border-left: 1px solid black;} /*borders between body cells*/
-
 </style>
-EOT;
-?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<body>
+
 
 
 <table style="height: 94px; margin-left: auto; margin-right: auto;" 
-border="1" width="800" cellspacing="10" cellpadding="10">
+border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody>
 <tr style="height: 116.188px;">
 <td style="width: 301px; height: 116.188;">
-<p style="text-align: center;"><img src="./img/logo.png" alt="logo" width="110%" height="110%" /></p>
-</td>
-
-<td style="width: 501px; height: 116.188px;" rowspan="6">
-<?php 
-
+Avvio Conversione&hellip;<br />
+<a href="./index.php">
+<img src="./img/logo.png" alt="logo" width="110%" height="110%" align="center"/>
+</a>
+EOT;
+echo '<div style="width: 300px;">';
+$p->render();
+echo '</div></tbody></table>';
 echo <<<EOT
 <div class="scrollingtable">
 <div>
@@ -171,89 +175,79 @@ echo <<<EOT
         <caption></caption>
         <thead>
           <tr>
-            <th><div label="File da Elaborare"></div></th>
+            <th><div label="Files in Elaborazione"></div></th>
 			<th class="scrollbarhead"/> <!--ALWAYS ADD THIS EXTRA CELL AT END OF HEADER ROW-->
 			</tr>
 		  </thead>
 		  <tbody>
 <tr><td> 
 EOT;
+$contaid = 1;
+$riga = "";
+foreach ($elef as $t) {
+  if (count($elef) == 1) {
+    $i = 100;
+  }
+  echo   basename($t) . '<br></td></tr><tr><td>';
 
-$ris=($ls->elefile(1));
-foreach($ris as $r){
-echo '<tr><td>'.$r.'</td></tr>';
-}
-echo 
-<<<EOT
-</td></tbody></table>
-</div>
-</div>
-</div>
-EOT;
-?>
-
-</td>
-</tr>
-<tr style="height: 116.188px;">
-
-<td style="width: 301px; height: 116.188px;">Seleziona file da caricare   
-  <form enctype="multipart/form-data" action="upload.php" method="post">
-        <div>
-           
-            <input type="file" id="file" name="file" accept="text/xml"/>
-        </div>
-        <div>
-            <button type="submit">Upload</button>
-        </div>
-    </form>
- 
-</tr>
-<tr style="height: 18px;">
-<td style="width: 301px; height: 18px;">&nbsp;</td>
-</tr><!---
-<tr style="height: 21px;">
-<td style="width: 301px; height: 21px;"><input name="submit" type="submit" value="scarica da SFTP" /></td>
-</tr>
-<tr style="height: 18px;">
-<td style="width: 301px; height: 18px;">&nbsp;</td>
-</tr>--->
-<tr style="height: 39px;">
-<td style="width: 301px; height: 39px;"><br />
-<form enctype="multipart/form-data" action="elab.php" method="post">
-<input name="submit" type="submit" value="Elaborazione Locale" 
-/>
-</form></td>
-</tr>
-</tbody>
-</table>
-<p><br /><br /></p>
-</body>
-</html>
-
-<?php
-/*
-require('../vendor/autoload.php');
-$app = new Silex\Application();
-$app['debug'] = true;
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
-// Register view rendering
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
-));
-// Our web handlers
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
-});
-
-$app->get('/cowsay', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
-  return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
-});
- 
-$app->run();
+  /*
+rimosso che non si riesce a trovare un xsd valido per sto nso....
+$ls->valfile(basename($t));
 */
-?>
+  $riga = $riga . $ls->processafile_xml(basename($t), $contaid);
+  //	echo basename($t).'<br>'.round($i,2).'%<br>';
+  $p->setProgressBarProgress($i * 100 / $size);
+  usleep(1000000 * 0.1);
+  $i = $i + $conta;
+  $contaid = $contaid + 1;
+}
+$p->setProgressBarProgress(100);
+
+echo
+<<<EOT
+
+
+</td></TR></tbody></table>
+</div>
+</div>
+</div>
+
+<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+border="1" width="311" cellspacing="10" cellpadding="10">
+<tbody><TD><BR><H1>
+<a href="./index.php">Terminato</a></h1><br/>
+</td></tbody></table>
+EOT;
+
+//echo $riga;
+
+$f = $ls->creafile($riga);
+
+if (strlen($f) > 3) {
+
+  $t = basename($f);
+
+  if ($ini_array['Parametri']['wbout'] == 1) {
+    echo <<<EOT
+<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+border="1" width="311" cellspacing="10" cellpadding="10">
+<tbody><TD><BR><H1>
+<a href="./{$t}">Scarica FIle Elaborato</a></h1><br/>
+</td></tbody></table>
+EOT;
+  } else {
+
+    echo <<<EOT
+    <table style="height: 94px; margin-left: auto; margin-right: auto;" 
+    border="1" width="311" cellspacing="10" cellpadding="10">
+    <tbody><TD><BR><H1>File Elaborato e disponibile in:<br> {$ini_array['percorsi']['output']}
+    </td></tbody></table>
+    EOT;
+  }
+}
+//$eleb=($ls->elefile(1));
+//$eleb2=($ls->elefile(2));
+//var_dump($eleb);
+//var_dump($eleb2);
+//var_dump(array_diff($eleb,$eleb2));
+//echo "bestia<br>";

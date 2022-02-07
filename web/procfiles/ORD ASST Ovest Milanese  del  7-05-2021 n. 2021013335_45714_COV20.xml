@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><StandardBusinessDocument xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"><StandardBusinessDocumentHeader><HeaderVersion>1.0</HeaderVersion><Sender><Identifier Authority="iso6523-actorid-upis">NSO0:7HW39T</Identifier></Sender><Receiver><Identifier Authority="iso6523-actorid-upis">NSO0:sichim@pec.it</Identifier></Receiver><DocumentIdentification><Standard>urn:oasis:names:specification:ubl:schema:xsd:Order-2</Standard><TypeVersion>2.1</TypeVersion><InstanceIdentifier>2c42bb7c-f9ff-4e0d-852e-af5ff4bc311b</InstanceIdentifier><Type>Order</Type><CreationDateAndTime>2021-05-07T15:30:14.090+02:00</CreationDateAndTime></DocumentIdentification><BusinessScope><Scope><Type>DOCUMENTID</Type><InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1::2.1</InstanceIdentifier></Scope><Scope><Type>PROCESSID</Type><InstanceIdentifier>urn:fdc:peppol.eu:poacc:bis:order_only:3</InstanceIdentifier></Scope></BusinessScope></StandardBusinessDocumentHeader><ns8:Order xmlns:ns8="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ns6="urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2" xmlns:ns5="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:ns7="urn:oasis:names:specification:ubl:schema:xsd:SignatureAggregateComponents-2" xmlns:ns9="urn:oasis:names:specification:ubl:schema:xsd:CommonSignatureComponents-2" xmlns:ns10="http://uri.etsi.org/01903/v1.4.1#" xmlns:ns2="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:ns4="http://uri.etsi.org/01903/v1.3.2#" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#">
+    <CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1</CustomizationID>
+    <ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</ProfileID>
+    <ID>2021013335_45714_COV20</ID>
+    <IssueDate>2021-05-07</IssueDate>
+    <IssueTime>11:21:29.000+02:00</IssueTime>
+    <OrderTypeCode>220</OrderTypeCode>
+    <Note>RICH. N. 11 DEL 28/04 MICROBIOLOGIA LEGNANO - ** EMERGENZA COVID-19 ** - OFF. FT-2021 - ** CONSEGNA URGENTE - GRAZIE **</Note>
+    <DocumentCurrencyCode>EUR</DocumentCurrencyCode>
+    <CustomerReference>Versetti, Laura</CustomerReference>
+    <AccountingCost>COV20</AccountingCost>
+    <ns2:OriginatorDocumentReference>
+        <ID>ZA5319E7C2</ID>
+    </ns2:OriginatorDocumentReference>
+    <ns2:BuyerCustomerParty>
+        <ns2:Party>
+            <EndpointID schemeID="0201">RZL4IM</EndpointID>
+            <ns2:PartyName>
+                <Name>ASST Ovest Milanese</Name>
+            </ns2:PartyName>
+            <ns2:PostalAddress>
+                <ns2:Country>
+                    <IdentificationCode>IT</IdentificationCode>
+                </ns2:Country>
+            </ns2:PostalAddress>
+            <ns2:PartyTaxScheme>
+                <CompanyID>IT09319650967</CompanyID>
+                <ns2:TaxScheme>
+                    <ID>VAT</ID>
+                </ns2:TaxScheme>
+            </ns2:PartyTaxScheme>
+            <ns2:PartyLegalEntity>
+                <RegistrationName>ASST Ovest Milanese</RegistrationName>
+            </ns2:PartyLegalEntity>
+            <ns2:Contact>
+                <Name>Laura Versetti</Name>
+                <Telephone>TEL: 02-97963416   </Telephone>
+            </ns2:Contact>
+        </ns2:Party>
+    </ns2:BuyerCustomerParty>
+    <ns2:SellerSupplierParty>
+        <ns2:Party>
+            <EndpointID schemeID="9906">IT00942591009</EndpointID>
+            <ns2:PartyName>
+                <Name>SOCIETA' ITALIANA CHIMICI DIVISIONE SCIENTIFICA R.L.</Name>
+            </ns2:PartyName>
+            <ns2:PostalAddress>
+                <StreetName>VIA RIO NELL'ELBA N. 140</StreetName>
+                <CityName>ROMA</CityName>
+                <PostalZone>00138</PostalZone>
+                <CountrySubentity>ROMA</CountrySubentity>
+                <ns2:Country>
+                    <IdentificationCode>IT</IdentificationCode>
+                </ns2:Country>
+            </ns2:PostalAddress>
+            <ns2:PartyLegalEntity>
+                <RegistrationName>SOCIETA' ITALIANA CHIMICI DIVISIONE SCIENTIFICA R.L.</RegistrationName>
+            </ns2:PartyLegalEntity>
+        </ns2:Party>
+    </ns2:SellerSupplierParty>
+    <ns2:AccountingCustomerParty>
+        <ns2:Party>
+            <EndpointID schemeID="0201">UF8K9W</EndpointID>
+            <ns2:PostalAddress>
+                <ns2:Country>
+                    <IdentificationCode>IT</IdentificationCode>
+                </ns2:Country>
+            </ns2:PostalAddress>
+            <ns2:PartyTaxScheme>
+                <CompanyID>IT09319650967</CompanyID>
+                <ns2:TaxScheme>
+                    <ID>VAT</ID>
+                </ns2:TaxScheme>
+            </ns2:PartyTaxScheme>
+            <ns2:PartyLegalEntity>
+                <RegistrationName>ASST Ovest Milanese</RegistrationName>
+            </ns2:PartyLegalEntity>
+        </ns2:Party>
+    </ns2:AccountingCustomerParty>
+    <ns2:Delivery>
+        <ns2:DeliveryLocation>
+            <ID>09319650967-ACQ_NOL</ID>
+            <ns2:Address>
+                <StreetName>Via Papa Giovanni Paolo II</StreetName>
+                <CityName>Legnano</CityName>
+                <PostalZone>20025</PostalZone>
+                <CountrySubentity>MI</CountrySubentity>
+                <ns2:Country>
+                    <IdentificationCode>IT</IdentificationCode>
+                </ns2:Country>
+            </ns2:Address>
+        </ns2:DeliveryLocation>
+        <ns2:DeliveryParty>
+            <ns2:PartyName>
+                <Name>ACQ-NOL-Magazzino Generale-Legnano</Name>
+            </ns2:PartyName>
+        </ns2:DeliveryParty>
+    </ns2:Delivery>
+    <ns2:PaymentTerms>
+        <Note>60 Giorni Data Ricevimento</Note>
+    </ns2:PaymentTerms>
+    <ns2:TaxTotal>
+        <TaxAmount currencyID="EUR">214.51</TaxAmount>
+    </ns2:TaxTotal>
+    <ns2:AnticipatedMonetaryTotal>
+        <LineExtensionAmount currencyID="EUR">975.06</LineExtensionAmount>
+        <PayableAmount currencyID="EUR">1189.57</PayableAmount>
+    </ns2:AnticipatedMonetaryTotal>
+    <ns2:OrderLine>
+        <ns2:LineItem>
+            <ID>1</ID>
+            <Quantity unitCode="C62" unitCodeListID="UNECERec20">3840.00</Quantity>
+            <LineExtensionAmount currencyID="EUR">300.02</LineExtensionAmount>
+            <AccountingCost>COV20#BA0240</AccountingCost>
+            <ns2:Price>
+                <PriceAmount currencyID="EUR">0.07813</PriceAmount>
+            </ns2:Price>
+            <ns2:Item>
+                <Description>PME54054179</Description>
+                <Name>FILTER TIPS 200 ul - COD. FT-200-LR - CONF. 960 PZ.</Name>
+                <ns2:SellersItemIdentification>
+                    <ID>FT-200-LR</ID>
+                </ns2:SellersItemIdentification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="STO" listVersionID="UNCL7143">W0503020201</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="ZZZ" listVersionID="UNCL7143">DM1:0</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:ClassifiedTaxCategory>
+                    <ID>S</ID>
+                    <Percent>22.00</Percent>
+                    <ns2:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns2:TaxScheme>
+                </ns2:ClassifiedTaxCategory>
+                <ns2:AdditionalItemProperty>
+                    <Name>Tipologia Ordinativo</Name>
+                    <Value>DIRETTO</Value>
+                </ns2:AdditionalItemProperty>
+            </ns2:Item>
+        </ns2:LineItem>
+    </ns2:OrderLine>
+    <ns2:OrderLine>
+        <ns2:LineItem>
+            <ID>2</ID>
+            <Quantity unitCode="C62" unitCodeListID="UNECERec20">3840.00</Quantity>
+            <LineExtensionAmount currencyID="EUR">300.02</LineExtensionAmount>
+            <AccountingCost>COV20#BA0240</AccountingCost>
+            <ns2:Price>
+                <PriceAmount currencyID="EUR">0.07813</PriceAmount>
+            </ns2:Price>
+            <ns2:Item>
+                <Description>PME54054180</Description>
+                <Name>FILTER TIPS 1000ul - COD. FT-1000-LR - CONF. 960 PZ.</Name>
+                <ns2:SellersItemIdentification>
+                    <ID>FT-1000-LR</ID>
+                </ns2:SellersItemIdentification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="STO" listVersionID="UNCL7143">W0503020201</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="ZZZ" listVersionID="UNCL7143">DM1:0</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:ClassifiedTaxCategory>
+                    <ID>S</ID>
+                    <Percent>22.00</Percent>
+                    <ns2:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns2:TaxScheme>
+                </ns2:ClassifiedTaxCategory>
+                <ns2:AdditionalItemProperty>
+                    <Name>Tipologia Ordinativo</Name>
+                    <Value>DIRETTO</Value>
+                </ns2:AdditionalItemProperty>
+            </ns2:Item>
+        </ns2:LineItem>
+    </ns2:OrderLine>
+    <ns2:OrderLine>
+        <ns2:LineItem>
+            <ID>3</ID>
+            <Quantity unitCode="C62" unitCodeListID="UNECERec20">4800.00</Quantity>
+            <LineExtensionAmount currencyID="EUR">375.02</LineExtensionAmount>
+            <AccountingCost>COV20#BA0240</AccountingCost>
+            <ns2:Price>
+                <PriceAmount currencyID="EUR">0.07813</PriceAmount>
+            </ns2:Price>
+            <ns2:Item>
+                <Description>PME54054187</Description>
+                <Name>FILTER TIPS 10 ul - COD. FT-10-LR - CONF. 960 PZ.</Name>
+                <ns2:SellersItemIdentification>
+                    <ID>FT-10-LR</ID>
+                </ns2:SellersItemIdentification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="STO" listVersionID="UNCL7143">W0503020201</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:CommodityClassification>
+                    <ItemClassificationCode listID="ZZZ" listVersionID="UNCL7143">DM1:0</ItemClassificationCode>
+                </ns2:CommodityClassification>
+                <ns2:ClassifiedTaxCategory>
+                    <ID>S</ID>
+                    <Percent>22.00</Percent>
+                    <ns2:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns2:TaxScheme>
+                </ns2:ClassifiedTaxCategory>
+                <ns2:AdditionalItemProperty>
+                    <Name>Tipologia Ordinativo</Name>
+                    <Value>DIRETTO</Value>
+                </ns2:AdditionalItemProperty>
+            </ns2:Item>
+        </ns2:LineItem>
+    </ns2:OrderLine>
+</ns8:Order></StandardBusinessDocument>

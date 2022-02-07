@@ -1,0 +1,363 @@
+<StandardBusinessDocument xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader"> 
+	<StandardBusinessDocumentHeader>
+			<HeaderVersion>1.0</HeaderVersion>
+			<Sender>
+				<Identifier Authority="iso6523-actorid-upis">NSO0:QRLULC</Identifier>
+			</Sender>
+			<Receiver>
+				<Identifier Authority="iso6523-actorid-upis">NSO0:FATTURE.COPERNICO@LEGALMAIL.IT</Identifier>
+			</Receiver>
+			<DocumentIdentification>
+				<Standard>urn:oasis:names:specification:ubl:schema:xsd:Order-2</Standard>
+				<TypeVersion>2.1</TypeVersion>
+				<InstanceIdentifier>2401bf35-14fc-40db-9506-8a1012bd7fef</InstanceIdentifier>
+				<Type>Order</Type>
+				<CreationDateAndTime>2019-06-04T10:48:03Z</CreationDateAndTime>
+			</DocumentIdentification>
+			<BusinessScope>
+				<Scope>
+					<Type>DOCUMENTID</Type>
+					<InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1</InstanceIdentifier>
+				</Scope>
+				<Scope>
+					<Type>PROCESSID</Type>
+					<InstanceIdentifier>urn:fdc:peppol.eu:poacc:bis:order_only:3</InstanceIdentifier>
+				</Scope>
+			</BusinessScope>
+	</StandardBusinessDocumentHeader>
+
+<ns4:Order xmlns:ns2="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ns4="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:ns3="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+    <CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</CustomizationID>
+    <ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</ProfileID>
+    <ID>S-2200151</ID>
+    <IssueDate>2022-01-31</IssueDate>
+    <OrderTypeCode listID="UNCL1001">220</OrderTypeCode>
+    <Note>SERVIZIO PULIZIA E SANIFICAZIONE IFO gennaio 2022 -</Note>
+    <DocumentCurrencyCode listID="ISO4217">EUR</DocumentCurrencyCode>
+    <ns3:ValidityPeriod>
+        <EndDate>2030-12-31</EndDate>
+    </ns3:ValidityPeriod>
+    <ns3:OriginatorDocumentReference>
+        <ID>CIG:9012768370</ID>
+    </ns3:OriginatorDocumentReference>
+    <ns3:BuyerCustomerParty>
+        <ns3:Party>
+            <EndpointID schemeID="0201">QRLULC</EndpointID>
+            <ns3:PartyName>
+                <Name>IFO</Name>
+            </ns3:PartyName>
+            <ns3:PostalAddress>
+                <StreetName>ROMA -  Via Elio Chianesi, 53</StreetName>
+                <CityName>ROMA</CityName>
+                <PostalZone>00144</PostalZone>
+                <CountrySubentity>RM</CountrySubentity>
+                <ns3:Country>
+                    <IdentificationCode listID="ISO3166-1:Alpha2">IT</IdentificationCode>
+                </ns3:Country>
+            </ns3:PostalAddress>
+            <ns3:PartyTaxScheme>
+                <CompanyID>IT01033011006</CompanyID>
+                <ns3:TaxScheme>
+                    <ID>VAT</ID>
+                </ns3:TaxScheme>
+            </ns3:PartyTaxScheme>
+            <ns3:PartyLegalEntity>
+                <RegistrationName>IFO</RegistrationName>
+            </ns3:PartyLegalEntity>
+            <ns3:Contact>
+                <Name>massimo.romano</Name>
+            </ns3:Contact>
+        </ns3:Party>
+    </ns3:BuyerCustomerParty>
+    <ns3:SellerSupplierParty>
+        <ns3:Party>
+            <EndpointID schemeID="0211">IT14457361005</EndpointID>
+            <ns3:PartyName>
+                <Name>COPERNICO SOCIETA' CONSORTILE PER AZIONI</Name>
+            </ns3:PartyName>
+            <ns3:PostalAddress>
+                <StreetName>Roma (RM)  - VIA VITTORIO EMANUELE ORLANDO, 75 -</StreetName>
+                <CityName>Roma</CityName>
+                <PostalZone>00185</PostalZone>
+                <CountrySubentity>RM</CountrySubentity>
+                <ns3:Country>
+                    <IdentificationCode listID="ISO3166-1:Alpha2">IT</IdentificationCode>
+                </ns3:Country>
+            </ns3:PostalAddress>
+            <ns3:PartyLegalEntity>
+                <RegistrationName>COPERNICO SOCIETA' CONSORTILE PER AZIONI</RegistrationName>
+            </ns3:PartyLegalEntity>
+        </ns3:Party>
+    </ns3:SellerSupplierParty>
+    <ns3:AccountingCustomerParty>
+        <ns3:Party>
+            <EndpointID schemeID="0201">UFWFGB</EndpointID>
+            <ns3:PartyName>
+                <Name>IFO</Name>
+            </ns3:PartyName>
+            <ns3:PostalAddress>
+                <StreetName>ROMA -  Via Elio Chianesi, 53</StreetName>
+                <CityName>ROMA</CityName>
+                <PostalZone>00144</PostalZone>
+                <CountrySubentity>RM</CountrySubentity>
+                <ns3:Country>
+                    <IdentificationCode listID="ISO3166-1:Alpha2">IT</IdentificationCode>
+                </ns3:Country>
+            </ns3:PostalAddress>
+            <ns3:PartyLegalEntity>
+                <RegistrationName>IFO</RegistrationName>
+            </ns3:PartyLegalEntity>
+        </ns3:Party>
+    </ns3:AccountingCustomerParty>
+    <ns3:Delivery>
+        <ns3:DeliveryLocation>
+            <ID>02153140583-030.02</ID>
+            <ns3:Address>
+                <StreetName>ROMA - Economale - Via Fermo Ognibene, 23/A</StreetName>
+                <AdditionalStreetName>-</AdditionalStreetName>
+                <CityName>ROMA</CityName>
+                <PostalZone>00144</PostalZone>
+                <CountrySubentity>RM</CountrySubentity>
+                <ns3:Country>
+                    <IdentificationCode listID="ISO3166-1:Alpha2">IT</IdentificationCode>
+                </ns3:Country>
+            </ns3:Address>
+        </ns3:DeliveryLocation>
+        <ns3:RequestedDeliveryPeriod>
+            <EndDate>2022-01-01</EndDate>
+        </ns3:RequestedDeliveryPeriod>
+    </ns3:Delivery>
+    <ns3:TaxTotal>
+        <TaxAmount currencyID="EUR">28796.79</TaxAmount>
+    </ns3:TaxTotal>
+    <ns3:AnticipatedMonetaryTotal>
+        <LineExtensionAmount currencyID="EUR">130894.53</LineExtensionAmount>
+        <TaxExclusiveAmount currencyID="EUR">130894.53</TaxExclusiveAmount>
+        <TaxInclusiveAmount currencyID="EUR">159691.32</TaxInclusiveAmount>
+        <PayableAmount currencyID="EUR">159691.32</PayableAmount>
+    </ns3:AnticipatedMonetaryTotal>
+    <ns3:OrderLine>
+        <Note>ROSSO</Note>
+        <ns3:LineItem>
+            <ID>10</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">7813</Quantity>
+            <LineExtensionAmount currencyID="EUR">30626.96</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">3.92</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+    <ns3:OrderLine>
+        <Note>ARANCIONE</Note>
+        <ns3:LineItem>
+            <ID>20</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">19911</Quantity>
+            <LineExtensionAmount currencyID="EUR">53361.48</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">2.68</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+    <ns3:OrderLine>
+        <Note>GIALLO</Note>
+        <ns3:LineItem>
+            <ID>30</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">11355</Quantity>
+            <LineExtensionAmount currencyID="EUR">11809.20</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">1.04</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+    <ns3:OrderLine>
+        <Note>VERDE</Note>
+        <ns3:LineItem>
+            <ID>40</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">30562</Quantity>
+            <LineExtensionAmount currencyID="EUR">21699.02</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">0.71</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+    <ns3:OrderLine>
+        <Note>BIANCO</Note>
+        <ns3:LineItem>
+            <ID>50</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">57236</Quantity>
+            <LineExtensionAmount currencyID="EUR">11447.20</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">0.20</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+    <ns3:OrderLine>
+        <Note>DISINFESTAZIONE E DERATTIZZAZIONE</Note>
+        <ns3:LineItem>
+            <ID>60</ID>
+            <Quantity unitCodeListID="UNECERec20" unitCode="MTR">1</Quantity>
+            <LineExtensionAmount currencyID="EUR">1950.67</LineExtensionAmount>
+            <AccountingCost>BA1590#1000001#502020102</AccountingCost>
+            <ns3:AllowanceCharge>
+                <ChargeIndicator>false</ChargeIndicator>
+                <AllowanceChargeReason>0</AllowanceChargeReason>
+                <Amount currencyID="EUR">0.00</Amount>
+            </ns3:AllowanceCharge>
+            <ns3:Price>
+                <PriceAmount currencyID="EUR">1950.67</PriceAmount>
+            </ns3:Price>
+            <ns3:Item>
+                <Name>servizio di pulizia</Name>
+                <ns3:BuyersItemIdentification>
+                    <ID>1180525</ID>
+                </ns3:BuyersItemIdentification>
+                <ns3:SellersItemIdentification>
+                    <ID>1014417</ID>
+                </ns3:SellersItemIdentification>
+                <ns3:ClassifiedTaxCategory>
+                    <ID schemeID="UNCL5305">S</ID>
+                    <Percent>22</Percent>
+                    <ns3:TaxScheme>
+                        <ID>VAT</ID>
+                    </ns3:TaxScheme>
+                </ns3:ClassifiedTaxCategory>
+                <ns3:AdditionalItemProperty>
+                    <Name>PackSizeNumeric</Name>
+                    <Value>1</Value>
+                </ns3:AdditionalItemProperty>
+            </ns3:Item>
+        </ns3:LineItem>
+    </ns3:OrderLine>
+</ns4:Order>
+
+</StandardBusinessDocument>

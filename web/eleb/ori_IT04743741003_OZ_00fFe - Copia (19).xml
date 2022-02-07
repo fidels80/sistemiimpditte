@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<StandardBusinessDocument xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+    <StandardBusinessDocumentHeader>
+        <HeaderVersion>1.0</HeaderVersion>
+        <Sender>
+            <Identifier Authority="iso6523-actorid-upis">NSO0:WQY18W</Identifier>
+        </Sender>
+        <Receiver>
+            <Identifier Authority="iso6523-actorid-upis">NSO0:fatture.copernico@legalmail.it</Identifier>
+        </Receiver>
+        <DocumentIdentification>
+            <Standard>urn:oasis:names:specification:ubl:schema:xsd:Order-2</Standard>
+            <TypeVersion>2.1</TypeVersion>
+            <InstanceIdentifier>d2bf5ca6-8ba8-3749-8dbd-77f299b952ff</InstanceIdentifier>
+            <Type>Order</Type>
+            <CreationDateAndTime>2021-11-08T01:39:13Z</CreationDateAndTime>
+        </DocumentIdentification>
+        <BusinessScope>
+            <Scope>
+                <Type>DOCUMENTID</Type>
+                <InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1</InstanceIdentifier>
+            </Scope>
+            <Scope>
+                <Type>PROCESSID</Type>
+                <InstanceIdentifier>urn:fdc:peppol.eu:poacc:bis:order_only:3</InstanceIdentifier>
+            </Scope>
+        </BusinessScope>
+    </StandardBusinessDocumentHeader>
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+    <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</cbc:ProfileID>
+    <cbc:ID>S1-2021-198</cbc:ID>
+    <cbc:IssueDate>2021-11-04</cbc:IssueDate>
+    <cbc:OrderTypeCode listID="UNCL1001">220</cbc:OrderTypeCode>
+    <cbc:DocumentCurrencyCode listID="ISO4217">EUR</cbc:DocumentCurrencyCode>
+    <cbc:CustomerReference>Referente MASSIMO BOSCHINI  Ufficio S1-ORDINI DIR. SANITARIA DISTRETTO 1</cbc:CustomerReference>
+    <cbc:AccountingCost>502020102</cbc:AccountingCost>
+    <cac:ValidityPeriod>
+        <cbc:EndDate>2022-12-31</cbc:EndDate>
+    </cac:ValidityPeriod>
+    <cac:OriginatorDocumentReference>
+        <cbc:ID>8828405646</cbc:ID>
+    </cac:OriginatorDocumentReference>
+    <cac:Contract>
+        <cbc:ID>2021-3966</cbc:ID>
+    </cac:Contract>
+    <cac:BuyerCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">WQY18W</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>ASL  Roma 4 </cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Sede legale - Via Terme di Traiano, 39/a</cbc:StreetName>
+                <cbc:CityName>CIVITAVECCHIA</cbc:CityName>
+                <cbc:PostalZone>00053</cbc:PostalZone>
+                <cbc:CountrySubentity>RM</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>IT04743741003</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>ASL  Roma 4 </cbc:RegistrationName>
+                <cbc:CompanyID>01</cbc:CompanyID>
+                <cac:RegistrationAddress>
+                    <cbc:CityName>CIVITAVECCHIA</cbc:CityName>
+                    <cac:Country>
+                        <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                    </cac:Country>
+                </cac:RegistrationAddress>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:BuyerCustomerParty>
+    <cac:SellerSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="9906">IT14457361005</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>COPERNICO SCPA</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>VIA VITTORIO EMANUELE ORLANDO N. 75</cbc:StreetName>
+                <cbc:CityName>ROMA</cbc:CityName>
+                <cbc:PostalZone>00185</cbc:PostalZone>
+                <cbc:CountrySubentity>RM</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>COPERNICO SCPA</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:SellerSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">UF870Q</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>ASL  Roma 4 </cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Sede legale - Via Terme di Traiano, 39/a</cbc:StreetName>
+                <cbc:CityName>CIVITAVECCHIA</cbc:CityName>
+                <cbc:PostalZone>00053</cbc:PostalZone>
+                <cbc:CountrySubentity>RM</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>IT04743741003</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>ASL  Roma 4 </cbc:RegistrationName>
+                <cbc:CompanyID>01</cbc:CompanyID>
+                <cac:RegistrationAddress>
+                    <cbc:CityName>CIVITAVECCHIA</cbc:CityName>
+                    <cac:Country>
+                        <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                    </cac:Country>
+                </cac:RegistrationAddress>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:Delivery>
+        <cac:DeliveryLocation>
+            <cbc:ID>04743741003-MDS1</cbc:ID>
+            <cbc:Name>MAG DIR SANITARIA DISTRETTO 1</cbc:Name>
+            <cac:Address>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:Address>
+        </cac:DeliveryLocation>
+    </cac:Delivery>
+    <cac:PaymentTerms>
+        <cbc:Note>CONTO CORRENTE BANCARIO</cbc:Note>
+    </cac:PaymentTerms>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="EUR">100274.06</cbc:TaxAmount>
+    </cac:TaxTotal>
+    <cac:AnticipatedMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">455791.19</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">455791.19</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">556065.25</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="EUR">556065.25</cbc:PayableAmount>
+    </cac:AnticipatedMonetaryTotal>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>1</cbc:ID>
+            <cbc:Quantity unitCode="MTK" unitCodeListID="UNECERec20">45032.94</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">195442.96</cbc:LineExtensionAmount>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">4.3400000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Name>SERVIZIO DI PULIZIA PROTOCOLLO ARANCIONE</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>4015973</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>2</cbc:ID>
+            <cbc:Quantity unitCode="MTK" unitCodeListID="UNECERec20">151282.44</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">46897.56</cbc:LineExtensionAmount>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">0.3100000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Name>SERVIZIO DI PULIZIA PROTOCOLLO BIANCO</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>4015970</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>3</cbc:ID>
+            <cbc:Quantity unitCode="MTK" unitCodeListID="UNECERec20">11389.68</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">27790.82</cbc:LineExtensionAmount>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">2.4400000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Name>SERVIZIO DI PULIZIA PROTOCOLLO GIALLO</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>4015972</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>4</cbc:ID>
+            <cbc:Quantity unitCode="MTK" unitCodeListID="UNECERec20">11691.3</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">66523.50</cbc:LineExtensionAmount>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">5.6900000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Name>SERVIZIO DI PULIZIA PROTOCOLLO ROSSO</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>4015974</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>5</cbc:ID>
+            <cbc:Quantity unitCode="MTK" unitCodeListID="UNECERec20">82163</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">119136.35</cbc:LineExtensionAmount>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">1.4500000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Name>SERVIZIO DI PULIZIA PROTOCOLLO VERDE</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>4015971</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+</Order>
+
+</StandardBusinessDocument>

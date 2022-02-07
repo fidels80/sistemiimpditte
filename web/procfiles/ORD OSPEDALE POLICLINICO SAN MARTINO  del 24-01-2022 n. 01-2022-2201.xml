@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardBusinessDocument xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+<StandardBusinessDocumentHeader>
+<HeaderVersion>1.0</HeaderVersion>
+<Sender> 
+<Identifier Authority="iso6523-actorid-upis">NSO0:BNVANZ</Identifier>
+</Sender>
+<Receiver>
+<Identifier Authority="iso6523-actorid-upis">NSO0:sichim@pec.it</Identifier>
+</Receiver>
+<DocumentIdentification>
+<Standard>urn:oasis:names:specification:ubl:schema:xsd:Order-2</Standard>
+<TypeVersion>2.1</TypeVersion>
+<InstanceIdentifier>01-2022-2201</InstanceIdentifier>
+<Type>Order</Type>
+<CreationDateAndTime>2022-01-24T12:05:29Z</CreationDateAndTime>
+</DocumentIdentification>
+<BusinessScope>
+<Scope>
+<Type>DOCUMENTID</Type>
+<InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1</InstanceIdentifier>
+</Scope><Scope>
+<Type>PROCESSID</Type>
+<InstanceIdentifier>urn:fdc:peppol.eu:poacc:bis:order_only:3</InstanceIdentifier>
+</Scope>
+</BusinessScope>
+</StandardBusinessDocumentHeader>
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+    <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</cbc:ProfileID>
+    <cbc:ID>01-2022-2201</cbc:ID>
+    <cbc:IssueDate>2022-01-24</cbc:IssueDate>
+    <cbc:OrderTypeCode listID="UNCL1001">220</cbc:OrderTypeCode>
+    <cbc:Note>acquistato 2021  244,00 - 2020  1.200,00 </cbc:Note>
+    <cbc:DocumentCurrencyCode listID="ISO4217">EUR</cbc:DocumentCurrencyCode>
+    <cbc:CustomerReference>Referente BARBARA ALBERTINI  Ufficio 01-U.O. Att.Economali e  Approv.</cbc:CustomerReference>
+    <cbc:AccountingCost>BA0240</cbc:AccountingCost>
+    <cac:ValidityPeriod>
+        <cbc:EndDate>2023-12-31</cbc:EndDate>
+    </cac:ValidityPeriod>
+    <cac:OriginatorDocumentReference>
+        <cbc:ID>ZD734E67C6</cbc:ID>
+    </cac:OriginatorDocumentReference>
+    <cac:BuyerCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">BNVANZ</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>OSPEDALE POLICLINICO SAN MARTINO </cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>L.GO ROSANNA BENZI,10</cbc:StreetName>
+                <cbc:CityName>GENOVA</cbc:CityName>
+                <cbc:PostalZone>16132</cbc:PostalZone>
+                <cbc:CountrySubentity>GE</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>IT02060250996</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>OSPEDALE POLICLINICO SAN MARTINO </cbc:RegistrationName>
+                <cbc:CompanyID>01</cbc:CompanyID>
+                <cac:RegistrationAddress>
+                    <cbc:CityName>GENOVA</cbc:CityName>
+                    <cac:Country>
+                        <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                    </cac:Country>
+                </cac:RegistrationAddress>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:BuyerCustomerParty>
+    <cac:SellerSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0211">IT00942591009</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>SOCIETA' ITALIANA CHIMICI</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>VIA RIO NELL'ELBA, 140</cbc:StreetName>
+                <cbc:CityName>ROMA</cbc:CityName>
+                <cbc:PostalZone>00138</cbc:PostalZone>
+                <cbc:CountrySubentity>RM</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>SOCIETA' ITALIANA CHIMICI</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:SellerSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">UFB4EA</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>OSPEDALE POLICLINICO SAN MARTINO </cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>L.GO ROSANNA BENZI,10</cbc:StreetName>
+                <cbc:CityName>GENOVA</cbc:CityName>
+                <cbc:PostalZone>16132</cbc:PostalZone>
+                <cbc:CountrySubentity>GE</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>IT02060250996</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>OSPEDALE POLICLINICO SAN MARTINO </cbc:RegistrationName>
+                <cbc:CompanyID>01</cbc:CompanyID>
+                <cac:RegistrationAddress>
+                    <cbc:CityName>GENOVA</cbc:CityName>
+                    <cac:Country>
+                        <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                    </cac:Country>
+                </cac:RegistrationAddress>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:Delivery>
+        <cac:DeliveryLocation>
+            <cbc:ID>02060250996-M54</cbc:ID>
+            <cbc:Name>DIAGNOSTICI REATTIVI / SERVICE</cbc:Name>
+            <cac:Address>
+                <cbc:StreetName>TEL. 010 5557272</cbc:StreetName>
+                <cbc:CityName>Largo Rosanna Benzi 10</cbc:CityName>
+                <cbc:PostalZone>16132</cbc:PostalZone>
+                <cbc:CountrySubentity>Ge</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:Address>
+        </cac:DeliveryLocation>
+        <cac:RequestedDeliveryPeriod>
+            <cbc:StartDate>2022-01-31</cbc:StartDate>
+            <cbc:EndDate>2022-01-31</cbc:EndDate>
+        </cac:RequestedDeliveryPeriod>
+    </cac:Delivery>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="EUR">44.00</cbc:TaxAmount>
+    </cac:TaxTotal>
+    <cac:AnticipatedMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">200.00</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">200.00</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">244.00</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="EUR">244.00</cbc:PayableAmount>
+    </cac:AnticipatedMonetaryTotal>
+    <cac:OrderLine>
+        <cac:LineItem>
+            <cbc:ID>1</cbc:ID>
+            <cbc:Quantity unitCode="XPK" unitCodeListID="UNECERec20">1</cbc:Quantity>
+            <cbc:LineExtensionAmount currencyID="EUR">200.00</cbc:LineExtensionAmount>
+            <cac:Delivery>
+                <cac:RequestedDeliveryPeriod>
+                    <cbc:StartDate>2022-01-31</cbc:StartDate>
+                    <cbc:EndDate>2022-01-31</cbc:EndDate>
+                </cac:RequestedDeliveryPeriod>
+            </cac:Delivery>
+            <cac:Price>
+                <cbc:PriceAmount currencyID="EUR">200.0000000</cbc:PriceAmount>
+            </cac:Price>
+            <cac:Item>
+                <cbc:Description>KIT FISSAZIONE E PERM CELLULE (200 TEST)</cbc:Description>
+                <cbc:Name>KIT FISSAZIONE E PERM CELLULE (200 TEST)FIX&amp;PERM (EX  GAS004) COD.GAS-002</cbc:Name>
+                <cac:BuyersItemIdentification>
+                    <cbc:ID>85410</cbc:ID>
+                </cac:BuyersItemIdentification>
+                <cac:ClassifiedTaxCategory>
+                    <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                    <cbc:Percent>22.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:ClassifiedTaxCategory>
+            </cac:Item>
+        </cac:LineItem>
+    </cac:OrderLine>
+</Order>
+</StandardBusinessDocument>

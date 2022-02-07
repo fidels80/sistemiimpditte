@@ -1,10 +1,27 @@
-<?php 
- //session_start();
-//require_once __DIR__ . '/inc/flash.php';
-include(__DIR__.'/include/ls.php');
-include(__DIR__.'/include/PB.php');
-$ls= new ls();
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function test()
+{
+    var idSelector = function() { return this.id; };
+    var fruitsGranted = $(":checkbox:checked").map(idSelector).get() ;
+    var fruitsDenied = $(":checkbox:not(:checked)").map(idSelector).get() ;
+    
+    alert("fruitsGranted: " + fruitsGranted  );
+    console.log(fruitsGranted);
+    console.log(jQuery.type( fruitsGranted ));
 
+    $.each(fruitsGranted, function(index, value){
+        //    $("#result").append(index + ": " + value + '<br>');
+       
+    console.log(index+"|||"+value);
+    });
+
+
+ 
+}
+</script>
+<?php
+include('.\include\ls.php');
 echo <<<EOT
 <style>
 /*the following html and body rule sets are required only if using a % width or height*/
@@ -27,8 +44,8 @@ body {
   vertical-align: middle;
   overflow: hidden;
   width: auto; /*if you want a fixed width, set it here, else set to auto*/
-  min-width: 100% 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
-  height: 488px/*100%*/; /*set table height here; can be fixed value or %*/
+  min-width: 0/*100%*/; /*if you want a % width, set it here, else set to 0*/
+  height: 600px/*100%*/; /*set table height here; can be fixed value or %*/
   min-height: 0/*104px*/; /*if using % height, make this large enough to fit scrollbar arrows + caption + thead*/
   font-family: Verdana, Tahoma, sans-serif;
   font-size: 15px;
@@ -138,122 +155,10 @@ body {
 .scrollingtable > div > div > table > tbody:last-of-type > tr:last-child > * {border-bottom: none;}
 .scrollingtable > div > div > table > tbody > tr:nth-child(even) {background: gainsboro;} /*alternate row color*/
 .scrollingtable > div > div > table > tbody > tr > * + * {border-left: 1px solid black;} /*borders between body cells*/
-
 </style>
+
 EOT;
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-<body>
-
-
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
-border="1" width="800" cellspacing="10" cellpadding="10">
-<tbody>
-<tr style="height: 116.188px;">
-<td style="width: 301px; height: 116.188;">
-<p style="text-align: center;"><img src="./img/logo.png" alt="logo" width="110%" height="110%" /></p>
-</td>
-
-<td style="width: 501px; height: 116.188px;" rowspan="6">
-<?php 
-
-echo <<<EOT
-<div class="scrollingtable">
-<div>
-    <div>
-      <table>
-        <caption></caption>
-        <thead>
-          <tr>
-            <th><div label="File da Elaborare"></div></th>
-			<th class="scrollbarhead"/> <!--ALWAYS ADD THIS EXTRA CELL AT END OF HEADER ROW-->
-			</tr>
-		  </thead>
-		  <tbody>
-<tr><td> 
-EOT;
-
-$ris=($ls->elefile(1));
-foreach($ris as $r){
-echo '<tr><td>'.$r.'</td></tr>';
-}
-echo 
-<<<EOT
-</td></tbody></table>
-</div>
-</div>
-</div>
-EOT;
-?>
-
-</td>
-</tr>
-<tr style="height: 116.188px;">
-
-<td style="width: 301px; height: 116.188px;">Seleziona file da caricare   
-  <form enctype="multipart/form-data" action="upload.php" method="post">
-        <div>
-           
-            <input type="file" id="file" name="file" accept="text/xml"/>
-        </div>
-        <div>
-            <button type="submit">Upload</button>
-        </div>
-    </form>
- 
-</tr>
-<tr style="height: 18px;">
-<td style="width: 301px; height: 18px;">&nbsp;</td>
-</tr><!---
-<tr style="height: 21px;">
-<td style="width: 301px; height: 21px;"><input name="submit" type="submit" value="scarica da SFTP" /></td>
-</tr>
-<tr style="height: 18px;">
-<td style="width: 301px; height: 18px;">&nbsp;</td>
-</tr>--->
-<tr style="height: 39px;">
-<td style="width: 301px; height: 39px;"><br />
-<form enctype="multipart/form-data" action="elab.php" method="post">
-<input name="submit" type="submit" value="Elaborazione Locale" 
-/>
-</form></td>
-</tr>
-</tbody>
-</table>
-<p><br /><br /></p>
-</body>
-</html>
-
-<?php
-/*
-require('../vendor/autoload.php');
-$app = new Silex\Application();
-$app['debug'] = true;
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
-// Register view rendering
-$app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
-));
-// Our web handlers
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
-});
-
-$app->get('/cowsay', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
-  return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
-});
- 
-$app->run();
-*/
+echo "devops<br>";
+$ls= new ls();
+echo $ls->grid();
 ?>
