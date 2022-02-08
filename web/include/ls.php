@@ -414,6 +414,14 @@ EOT;
 EOT;
         return $html;
     }
+
+function processafile_xls($file, $ind = null){
+
+echo $file.'<br></td></tr><tr><td>';
+
+}
+
+
 }
 ?>
 

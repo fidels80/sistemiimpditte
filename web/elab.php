@@ -188,13 +188,13 @@ foreach ($elef as $t) {
   if (count($elef) == 1) {
     $i = 100;
   }
-  echo   basename($t) . '<br></td></tr><tr><td>';
+  //echo   basename($t) . '<br></td></tr><tr><td>';
 
   /*
 rimosso che non si riesce a trovare un xsd valido per sto nso....
 $ls->valfile(basename($t));
 */
-  $riga = $riga . $ls->processafile_xml(basename($t), $contaid);
+  $riga = $riga . $ls->processafile_xls(basename($t), $contaid);
   //	echo basename($t).'<br>'.round($i,2).'%<br>';
   $p->setProgressBarProgress($i * 100 / $size);
   usleep(1000000 * 0.1);
