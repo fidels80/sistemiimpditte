@@ -6,6 +6,17 @@ include(__DIR__.'/include/PB.php');
 $ls= new ls();
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 $ext=$ini_array['Parametri']['estensione'];
+//$ext2=$ini_array['EXTENSION']['ext'];
+$ext2=$ini_array['EXTENSION'];
+//var_dump($ext);
+$search='';
+foreach ($ext2['ext'] as $value){
+
+  //  echo $value . '<br>';
+$search=$search  .'.'.str_replace('.','','.'.$value).',';
+}
+$search=$search.'}';
+$search=str_replace(',}','',$search);  
 echo <<<EOT
 <style>
 /*the following html and body rule sets are required only if using a % width or height*/
@@ -197,13 +208,13 @@ EOT;
 </tr>
 <tr style="height: 116.188px;">
 
-<td style="width: 301px; height: 116.188px;">Seleziona file da caricare   
+<td style="width: 301px; height: 116.188px;">Seleziona files da caricare   
   <form enctype="multipart/form-data" action="upload.php" method="post">
         <div>
 <?php
  echo
  <<<EOT
- <input type="file" id="file" name="file[]" multiple accept=".{$ext}" />
+ <input type="file" id="file" name="file[]" multiple accept="{$search}" />
 EOT;
  
  
