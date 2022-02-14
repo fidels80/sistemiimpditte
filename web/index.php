@@ -160,6 +160,52 @@ EOT;
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+ //       $.getJSON("atecoid.json", function(data){
+ //          console.log(data);
+ //           console.log(data.data.id); // Prints: Harry
+ //           console.log(data.text); // Prints: 14
+ //       }).fail(function(){
+ //           console.log("An error has occurred.");
+  //      });
+ //       $.getJSON("atecoid.json", function(data){
+ //       $.each(data.features, function(i, feature) {
+ // console.log(feature.properties.id);
+//})
+
+$.getJSON("atecoid.json", function(data){
+    console.log(data);
+    $.each(data, function() {
+    });
+var data2=$.map(data,function(obj){
+    console.log(obj);
+    obj.id=obj.id;
+    obj.text=obj.id +" ||  "+ obj.text;
+    obj.disabled=true;
+    console.log(obj.id.substring(0,1));
+    if ($.isNumeric(obj.id.substring(0,1))) {
+        obj.disabled=false;
+};
+return obj;
+}
+
+)
+
+    $(".js-example-data-array-selected").select2({
+  data: data2
+});
+
+});
+
+        }
+    );
+    </script>
+
 </head>
 <body>
 
@@ -244,6 +290,9 @@ EOT;
 <tr style="height: 39px;">
 <td style="width: 301px; height: 39px;"><br />
 <form enctype="multipart/form-data" action="elab.php" method="post">
+<select id='ateco' class="js-example-data-array-selected" style="width: 100%"  name="state">
+<option></option>
+
 <input name="submit" type="submit" value="Elaborazione Locale" 
 />
 </form></td>
