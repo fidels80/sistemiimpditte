@@ -1,12 +1,29 @@
 <?php
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
+include(__DIR__.'/include/profis.php');
+$pfs=new profis();
+
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 $ls = new ls();
 $ls->localelab();
 $content = "";
 $p = new ProgressBar();
+if (!empty($_POST)){
+   strlen($_POST['state'])==0 ? die("non è stato selezioanto il codice ATECO") : 1;
+  
+  echo '<BR>';
+  echo '<BR>';
+  echo '<BR>';
+  echo ($_POST['state']);
+  }
+  else{
+      echo 'qualcosa non quadra!!!';
 
+
+
+  }
+  
 $eleb = ($ls->elefile(1));
 $eleb2 = ($ls->elefile(2));
 //var_dump($eleb);
@@ -194,7 +211,7 @@ foreach ($elef as $t) {
 rimosso che non si riesce a trovare un xsd valido per sto nso....
 $ls->valfile(basename($t));
 */
-  $riga = $riga . $ls->processafile_xls(basename($t), $contaid);
+  $riga = $riga . $pfs-> creaditta_File(basename($t), $contaid,$_POST['state']);
   //	echo basename($t).'<br>'.round($i,2).'%<br>';
   $p->setProgressBarProgress($i * 100 / $size);
   usleep(1000000 * 0.1);

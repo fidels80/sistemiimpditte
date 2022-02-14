@@ -1,22 +1,22 @@
-<?php 
- //session_start();
+<?php
+//session_start();
 //require_once __DIR__ . '/inc/flash.php';
-include(__DIR__.'/include/ls.php');
-include(__DIR__.'/include/PB.php');
-$ls= new ls();
-$ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
-$ext=$ini_array['Parametri']['estensione'];
+include __DIR__ . '/include/ls.php';
+include __DIR__ . '/include/PB.php';
+$ls = new ls();
+$ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+$ext = $ini_array['Parametri']['estensione'];
 //$ext2=$ini_array['EXTENSION']['ext'];
-$ext2=$ini_array['EXTENSION'];
+$ext2 = $ini_array['EXTENSION'];
 //var_dump($ext);
-$search='';
-foreach ($ext2['ext'] as $value){
+$search = '';
+foreach ($ext2['ext'] as $value) {
 
-  //  echo $value . '<br>';
-$search=$search  .'.'.str_replace('.','','.'.$value).',';
+    //  echo $value . '<br>';
+    $search = $search . '.' . str_replace('.', '', '.' . $value) . ',';
 }
-$search=$search.'}';
-$search=str_replace(',}','',$search);  
+$search = $search . '}';
+$search = str_replace(',}', '', $search);
 echo <<<EOT
 <style>
 /*the following html and body rule sets are required only if using a % width or height*/
@@ -166,19 +166,7 @@ EOT;
 
 <script>
     $(document).ready(function(){
- //       $.getJSON("atecoid.json", function(data){
- //          console.log(data);
- //           console.log(data.data.id); // Prints: Harry
- //           console.log(data.text); // Prints: 14
- //       }).fail(function(){
- //           console.log("An error has occurred.");
-  //      });
- //       $.getJSON("atecoid.json", function(data){
- //       $.each(data.features, function(i, feature) {
- // console.log(feature.properties.id);
-//})
-
-$.getJSON("atecoid.json", function(data){
+  $.getJSON("atecoid.json", function(data){
     console.log(data);
     $.each(data, function() {
     });
@@ -210,7 +198,7 @@ return obj;
 <body>
 
 
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+<table style="height: 94px; margin-left: auto; margin-right: auto;"
 border="1" width="800" cellspacing="10" cellpadding="10">
 <tbody>
 <tr style="height: 116.188px;">
@@ -219,7 +207,7 @@ border="1" width="800" cellspacing="10" cellpadding="10">
 </td>
 
 <td style="width: 501px; height: 116.188px;" rowspan="6">
-<?php 
+<?php
 
 echo <<<EOT
 <div class="scrollingtable">
@@ -234,15 +222,15 @@ echo <<<EOT
 			</tr>
 		  </thead>
 		  <tbody>
-<tr><td> 
+<tr><td>
 EOT;
 
-$ris=($ls->elefile(1));
-foreach($ris as $r){
-echo '<tr><td>'.$r.'</td></tr>';
+$ris = ($ls->elefile(1));
+foreach ($ris as $r) {
+    echo '<tr><td>' . $r . '</td></tr>';
 }
-echo 
-<<<EOT
+echo
+    <<<EOT
 </td></tbody></table>
 </div>
 </div>
@@ -254,29 +242,23 @@ EOT;
 </tr>
 <tr style="height: 116.188px;">
 
-<td style="width: 301px; height: 116.188px;">Seleziona files da caricare   
+<td style="width: 301px; height: 116.188px;">Seleziona files da caricare
   <form enctype="multipart/form-data" action="upload.php" method="post">
         <div>
 <?php
- echo
- <<<EOT
+echo
+    <<<EOT
  <input type="file" id="file" name="file[]" multiple accept="{$search}" />
 EOT;
- 
- 
- 
- 
- 
- 
- 
-    $rr= "accept='.{$ext}";
-    ?>
+
+$rr = "accept='.{$ext}";
+?>
           </div>
         <div>
             <button type="submit">Upload</button>
         </div>
     </form>
- 
+
 </tr>
 <tr style="height: 18px;">
 <td style="width: 301px; height: 18px;">&nbsp;</td>
@@ -290,10 +272,12 @@ EOT;
 <tr style="height: 39px;">
 <td style="width: 301px; height: 39px;"><br />
 <form enctype="multipart/form-data" action="elab.php" method="post">
-<select id='ateco' class="js-example-data-array-selected" style="width: 100%"  name="state">
+<label for="id_label_single">
+  IMMETTI CODICE ATECO
+<select id='ateco' class="js-example-data-array-selected" style="width: 300px"  name="state">
 <option></option>
-
-<input name="submit" type="submit" value="Elaborazione Locale" 
+</label>
+<input name="submit" type="submit" value="Elaborazione Locale"
 />
 </form></td>
 </tr>
@@ -310,23 +294,23 @@ $app = new Silex\Application();
 $app['debug'] = true;
 // Register the monolog logging service
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
+'monolog.logfile' => 'php://stderr',
 ));
 // Register view rendering
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
-    'twig.path' => __DIR__.'/views',
+'twig.path' => __DIR__.'/views',
 ));
 // Our web handlers
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return $app['twig']->render('index.twig');
+$app['monolog']->addDebug('logging output.');
+return $app['twig']->render('index.twig');
 });
 
 $app->get('/cowsay', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
-  return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
+$app['monolog']->addDebug('cowsay');
+return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
 });
- 
+
 $app->run();
-*/
+ */
 ?>

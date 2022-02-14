@@ -20,30 +20,16 @@ $ext=$ini_array['EXTENSION'];
 //var_dump($ext);
 $search='{';
 foreach ($ext['ext'] as $value){
-
-    echo $value . '<br>';
+echo $value . '<br>';
 $search=$search  .str_replace('.','',$value).',';
 }
 $search=$search.'}';
 $search=str_replace(',}','}',$search);  
-//print_r ($search);;
 echo '<br>';
-//print_r('.\\'.$ini_array['percorsi']['oripath'] .'*.'. $search);
-//var_dump( glob('.\\'.$ini_array['percorsi']['oripath'] .'*.'. $search,GLOB_BRACE));
-
-
-
 $xlsx= SimpleXLSX::parse('.\toelab\test_lotto - Copia.xlsx');
-
-//var_dump( $tm->rows(1)) ;
-
 $sheets=$xlsx->sheetNames(); 
-
 foreach($sheets as $index => $name){
-  //  echo "Reading sheet :".$name."<br>";
     foreach ( $xlsx->rows($index) as $r => $row ) {
-//        print_r($row);
- //       echo "<br>";
     }
 }
 
@@ -123,7 +109,8 @@ return obj;
     );
     </script>
 <form method="post"  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-<select id='ateco' class="js-example-data-array-selected" style="width: 50%"  name="state">
+<select id='ateco'  
+ class="js-example-data-array-selected" style="width: 50%"  required name="state">
 <option></option>
 <input name="submit" type="submit" value="Elaborazione Locale" 
 
