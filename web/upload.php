@@ -36,12 +36,9 @@ for( $i=0 ; $i < $total ; $i++ ) {
   }
 }
 
-echo  __DIR__ .'<br>';
-echo $tmpFilePath.'<br>';
-echo $newFilePath.'<br>';
 
 if ($chk==0){
-//header("Location: ./index.php"); 
+header("Location: ./index.php"); 
 ob_end_flush();
 }
 else
