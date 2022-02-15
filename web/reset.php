@@ -9,8 +9,9 @@ $ls= new ls();
 //$ls->localelab();
 $directory = new DirectoryIterator(dirname(__FILE__));
 $di =str_replace('include','',$directory->getPath());
+$di=str_replace(__DIR__,'include','');
 //var_dump($ini_array);
-$lpath = glob($di.'\\'.$ini_array['percorsi']['toelab'].'*');
+$lpath = glob($di.''.$ini_array['percorsi']['toelab'].'*');
 //echo $di.$ini_array['percorsi']['procfiles'];
 //var_dump($lpath);
     foreach ($lpath as $f) {
@@ -18,7 +19,7 @@ $lpath = glob($di.'\\'.$ini_array['percorsi']['toelab'].'*');
 $ls->reset($f);
     }
  //   echo $di.$ini_array['percorsi']['procfiles'];
-    $lpath = glob($di.'\\'.$ini_array['percorsi']['procfiles'].'*');
+    $lpath = glob($di.''.$ini_array['percorsi']['procfiles'].'*');
   //  var_dump($lpath);
     foreach ($lpath as $f) {
    echo  "rimosso file {$f}<br>";
