@@ -6,7 +6,6 @@ ob_start();
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
 include(__DIR__.'/inc/functions.php');
-include(__DIR__.'/inc/flash.php');
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 $ext=$ini_array['Parametri']['estensione'];
 $el=$ini_array['percorsi']['toelab'];
@@ -36,8 +35,11 @@ for( $i=0 ; $i < $total ; $i++ ) {
     }else {$chk=99;}
   }
 }
+echo $tmpFilePath.'<br>';
+echo $newFilePath.'<br>';
+
 if ($chk==0){
-header("Location: ./index.php"); 
+//header("Location: ./index.php"); 
 ob_end_flush();
 }
 else
