@@ -12,13 +12,13 @@ $p = new ProgressBar();
 if (!empty($_POST)){
    strlen($_POST['state'])==0 ? die("non è stato selezioanto il codice ATECO") : 1;
   
-  echo '<BR>';
-  echo '<BR>';
-  echo '<BR>';
-  echo ($_POST['state']);
+  //echo '<BR>';
+  //echo '<BR>';
+  //echo '<BR>';
+  //echo ($_POST['state']);
   }
   else{
-      echo 'qualcosa non quadra!!!';
+      echo 'qualquadra non cosa!!!';
 
 
 

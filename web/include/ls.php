@@ -12,8 +12,8 @@ class ls
 
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
-        echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
-        echo str_replace(__DIR__,'include','');
+       // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
+       // echo str_replace(__DIR__,'include','');
         if (!is_dir(  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'])) {
             echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
         }
