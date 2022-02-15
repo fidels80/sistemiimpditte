@@ -22,85 +22,30 @@ if ($file = fopen($file_, "r")) {
        echo $line;
        echo '<br><br>';
         # do same stuff with the $line
+            $fc=$this->build_d0($line,$ateco);
+            $fc=$fc.$this->build_d1($line,$ateco);
+            $fc=$fc.$this->build_d2($line,$ateco);
+            $fc=$fc.$this->build_d3($line,$ateco);
+            
+
+
     }
     fclose($file);
 }
-
-
-
-
-if (1==""){
-$fc=$this->build_d0($file2);
-$fc=$fc.$this->build_d1($file2);
-$fc=$fc.$this->build_d2($file2);
-$fc=$fc.$this->build_d3($file2);
-}
-/*
-//var_dump($fc);
-$row=''.$ateco.'-----'.$file.PHP_EOL;
-
-$tlen=600;
-
-    $D0='110';
-    $D1='111';
-    $D2='112';
-    $D3='113';
-    $D4='114';
-    $D5='115';
-    $D6='116';
-    $D7='117';
-    $D8='118';
-    $DP='119';
-    $DE='1110';
-    $DR='1111';
-    $DG='1112';
-    $DA='1113';
- 
-
-
-
-
-$row=$row.$D0. PHP_EOL;
-$row=$row.$D1. PHP_EOL;
-$row=$row.$D2. PHP_EOL;
-$row=$row.$D3. PHP_EOL;
-$row=$row.$D4. PHP_EOL;
-$row=$row.$D5. PHP_EOL;
-$row=$row.$D6. PHP_EOL;
-$row=$row.$D7. PHP_EOL;
-$row=$row.$D8. PHP_EOL;
-$row=$row.$DP. PHP_EOL;
-$row=$row.$DE. PHP_EOL;
-$row=$row.$DR. PHP_EOL;
-$row=$row.$DG. PHP_EOL;
-$row=$row.$DA. PHP_EOL;
-
-*/ 
-
-
-
-
- 
-
+$row=$fc;
 echo $row.'<br></td></tr><tr><td>';
 return $row;
-
 }
-
-function build_d0($file)
-
+function build_d0($file,$ateco)
 {
-    $t=file_get_contents($file);
-    return $t;
+    $ris='D0'.$ateco;
+    
+    return $ris.PHP_EOL;
 }
-
-
-function build_d1($file)
-
+function build_d1($file,$ateco)
 {
  //   $t=file_get_contents($file);
    $ris='D1';
-   
    $ris=$ris.date('Y');//date('Y-m-d H:i:s') ;//ese
    $ris=$ris.'0101'.date('Y'); //datai
    $ris=$ris.'3112'.date('Y'); //dataf
@@ -110,12 +55,10 @@ function build_d1($file)
    $ris=$ris.'2021.7  '.'A'.PHP_EOL;
    return $ris;
 }
-
-function build_d2($file)
+function build_d2($file,$ateco)
 {
    // $t=file_get_contents($file);
    $ris='D2';
-
    $ris=$ris.date('Y');//ese
    $ris=$ris.'00';//atc
    $ris=$ris.str_pad($ateco,6,'0');//cate07
@@ -125,16 +68,13 @@ function build_d2($file)
    $ris=$ris.'1';//IAAbbAliFis
    $ris=$ris.str_pad(' ',387); //blk
    $ris=$ris.'2021.7  '.'A'.PHP_EOL;
+   return $ris;
 }
-
-function build_d3($file)
-
+function build_d3($file,$ateco)
 {
    // $t=file_get_contents($file);
     $ris='D3';
     $ris=$ris.str_pad('',6,'0');//dit
-
-
     $ris=$ris.date('Y');//aiv
     $ris=$ris.date('Y');//ati
     $ris=$ris.str_pad($ateco,6,'0');//cate07
