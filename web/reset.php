@@ -25,5 +25,14 @@ $ls->reset($f);
    echo  "rimosso file {$f}<br>";
 $ls->reset($f);
     }
+
+$web= glob(__DIR__.'/*.csv');
+ 
+foreach ($web as $f) {
+  echo  "rimosso file {$f}<br>";
+$ls->reset($f);
+   }
+
+
 ?>
  
