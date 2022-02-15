@@ -6,7 +6,7 @@ function creaditta_File($file,$id=null, $ateco){
 $ind=$id;
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 //$ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
-
+$ateco=str_pad(str_replace('.','',$ateco),6,' ');
 $ext = $ini_array['Parametri']['estensione'];
 $sep=$ini_array['Parametri']['sep'];
 $f = $file;

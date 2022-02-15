@@ -33,9 +33,6 @@ class ls
             } else {
             }
         }
-
-
-
         $res = [];
         if ($dir == 1) {
             $lpath = glob($di . $ini_array['percorsi']['toelab'] . '*.' . $search, GLOB_BRACE);
@@ -50,8 +47,8 @@ class ls
             }
         }
 
-
-        return $res;
+ 
+        return array_unique($res);
     }
 
 
