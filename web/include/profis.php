@@ -47,8 +47,8 @@ function build_d0($ateco,$line)
 {
      //print_R($line);
     // $ris=$line.'D0'.$ateco.$line;
-    isset($line) ? $line :die;
-    $ris=$line.'D0'. $ateco  ;
+    isset($line) ? $line :die('la linea del file è vuota!!!');
+    $ris='D0'. $ateco  ;
     return $ris.PHP_EOL;
 }
 function build_d1($line,$ateco)
