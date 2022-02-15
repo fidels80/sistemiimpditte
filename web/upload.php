@@ -35,7 +35,8 @@ for( $i=0 ; $i < $total ; $i++ ) {
     }else {$chk=99;}
   }
 }
-echo str_replace(__DIR__,'include','').'<br>';
+
+echo  __DIR__ .'<br>';
 echo $tmpFilePath.'<br>';
 echo $newFilePath.'<br>';
 
