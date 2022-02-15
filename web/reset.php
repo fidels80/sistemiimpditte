@@ -10,7 +10,7 @@ $ls= new ls();
 $directory = new DirectoryIterator(dirname(__FILE__));
 $di =str_replace('include','',$directory->getPath());
 //var_dump($ini_array);
-$lpath = glob($di.'\\'.$ini_array['percorsi']['toelab'].'*.xml');
+$lpath = glob($di.'\\'.$ini_array['percorsi']['toelab'].'*');
 //echo $di.$ini_array['percorsi']['procfiles'];
 //var_dump($lpath);
     foreach ($lpath as $f) {
@@ -18,7 +18,7 @@ $lpath = glob($di.'\\'.$ini_array['percorsi']['toelab'].'*.xml');
 $ls->reset($f);
     }
  //   echo $di.$ini_array['percorsi']['procfiles'];
-    $lpath = glob($di.'\\'.$ini_array['percorsi']['procfiles'].'*.xml');
+    $lpath = glob($di.'\\'.$ini_array['percorsi']['procfiles'].'*');
   //  var_dump($lpath);
     foreach ($lpath as $f) {
    echo  "rimosso file {$f}<br>";

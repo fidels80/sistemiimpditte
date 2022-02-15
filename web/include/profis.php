@@ -13,9 +13,29 @@ $f = $file;
 ((is_null($ind) == true) ? $ind = 1 : $ind);
 $directory = new DirectoryIterator(dirname(__FILE__));
 $di = str_replace('include', '', $directory->getPath());
-$file2 = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+$file_ = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+//file2 = file_get_contents($file_);
+$row='';
+if ($file = fopen($file_, "r")) {
+    while(!feof($file)) {
+        $line = fgets($file);
+       echo $line;
+       echo '<br><br>';
+        # do same stuff with the $line
+    }
+    fclose($file);
+}
 
+
+
+
+if (1==""){
 $fc=$this->build_d0($file2);
+$fc=$fc.$this->build_d1($file2);
+$fc=$fc.$this->build_d2($file2);
+$fc=$fc.$this->build_d3($file2);
+}
+/*
 //var_dump($fc);
 $row=''.$ateco.'-----'.$file.PHP_EOL;
 
@@ -38,6 +58,8 @@ $tlen=600;
  
 
 
+
+
 $row=$row.$D0. PHP_EOL;
 $row=$row.$D1. PHP_EOL;
 $row=$row.$D2. PHP_EOL;
@@ -53,7 +75,7 @@ $row=$row.$DR. PHP_EOL;
 $row=$row.$DG. PHP_EOL;
 $row=$row.$DA. PHP_EOL;
 
- 
+*/ 
 
 
 
@@ -76,7 +98,7 @@ function build_d0($file)
 function build_d1($file)
 
 {
-    $t=file_get_contents($file);
+ //   $t=file_get_contents($file);
    $ris='D1';
    
    $ris=$ris.date('Y');//date('Y-m-d H:i:s') ;//ese
@@ -90,22 +112,40 @@ function build_d1($file)
 }
 
 function build_d2($file)
-
 {
-    $t=file_get_contents($file);
-   return $t;
+   // $t=file_get_contents($file);
+   $ris='D2';
+
+   $ris=$ris.date('Y');//ese
+   $ris=$ris.'00';//atc
+   $ris=$ris.str_pad($ateco,6,'0');//cate07
+   $ris=$ris.str_pad(' ',5);//cate
+   $ris=$ris.str_pad(' ',50);//atdes
+   $ris=$ris.str_pad(' ',6);//cpc
+   $ris=$ris.'1';//IAAbbAliFis
+   $ris=$ris.str_pad(' ',387); //blk
+   $ris=$ris.'2021.7  '.'A'.PHP_EOL;
 }
 
 function build_d3($file)
 
 {
-    $t=file_get_contents($file);
+   // $t=file_get_contents($file);
     $ris='D3';
+    $ris=$ris.str_pad('',6,'0');//dit
+
+
+    $ris=$ris.date('Y');//aiv
+    $ris=$ris.date('Y');//ati
+    $ris=$ris.str_pad($ateco,6,'0');//cate07
+    $ris=$ris.str_pad(' ',5);//cate
+    $ris=$ris.str_pad(' ',50);//atdes
+
+
+
     
     
-    
-    
-    
+    $ris=$ris.str_pad(' ',359); //blk
     $ris=$ris.'2021.7  '.'A'.PHP_EOL;
     return $ris;
 }
