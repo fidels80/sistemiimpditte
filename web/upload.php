@@ -24,7 +24,7 @@ for( $i=0 ; $i < $total ; $i++ ) {
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
-    $newFilePath = str_replace(__DIR__,'include','').$el . $_FILES['file']['name'][$i];
+    $newFilePath =(__DIR__).$el . $_FILES['file']['name'][$i];
 
     //Upload the file into the temp dir
     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
