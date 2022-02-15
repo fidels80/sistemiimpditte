@@ -6,10 +6,14 @@ class ls
     public $ini_array = array();
     function elefile($dir)
     {
+
+    //    include __DIR__ . '/include/ls.php';
+    //    include __DIR__ . '/include/PB.php';
+
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
         if (!is_dir($ini_array['percorsi']['oripath'])) {
-            echo "<H1>attenzione la directory di origine gli nso non esiste controllare il config.ini voce oripath</h1>";
+            echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
         }
         //var_dump($ini_array);
         $ext = $ini_array['EXTENSION'];
