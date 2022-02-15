@@ -18,31 +18,40 @@ $file_ = $di . $ini_array['percorsi']['toelab'] . (basename($f));
 $row='';
 if ($file = fopen($file_, "r")) {
     while(!feof($file)) {
-        $line = fgets($file);
-       echo $line;
-       echo '<br><br>';
+        $line =ltrim(rtrim( fgets($file)));
+     //  echo $line;
+      // echo gettype($line);
+      // echo '<br><br>';
         # do same stuff with the $line
-            $fc=$this->build_d0($line,$ateco);
+        $line2=$line;
+            $fc=$this->build_d0($ateco,ltrim(rtrim( fgets($file))));
             $fc=$fc.$this->build_d1($line,$ateco);
             $fc=$fc.$this->build_d2($line,$ateco);
             $fc=$fc.$this->build_d3($line,$ateco);
-            
+            $row=$row.$fc; 
 
 
     }
     fclose($file);
 }
-$row=$fc;
+
 echo $row.'<br></td></tr><tr><td>';
 return $row;
 }
-function build_d0($file,$ateco)
+
+
+
+
+
+function build_d0($ateco,$line)
 {
-    $ris='D0'.$ateco;
-    
+     //print_R($line);
+    // $ris=$line.'D0'.$ateco.$line;
+    isset($line) ? $line :die;
+    $ris=$line.'D0'. $ateco  ;
     return $ris.PHP_EOL;
 }
-function build_d1($file,$ateco)
+function build_d1($line,$ateco)
 {
  //   $t=file_get_contents($file);
    $ris='D1';
@@ -55,7 +64,7 @@ function build_d1($file,$ateco)
    $ris=$ris.'2021.7  '.'A'.PHP_EOL;
    return $ris;
 }
-function build_d2($file,$ateco)
+function build_d2($line,$ateco)
 {
    // $t=file_get_contents($file);
    $ris='D2';
@@ -70,7 +79,7 @@ function build_d2($file,$ateco)
    $ris=$ris.'2021.7  '.'A'.PHP_EOL;
    return $ris;
 }
-function build_d3($file,$ateco)
+function build_d3($line,$ateco)
 {
    // $t=file_get_contents($file);
     $ris='D3';
