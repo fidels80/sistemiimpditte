@@ -9,12 +9,16 @@ class ls
 
     //    include __DIR__ . '/include/ls.php';
     //    include __DIR__ . '/include/PB.php';
-
+//str_replace("ns8:", "", $tmp_xml);
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
-       // echo str_replace(__DIR__,'include','');
-        if (!is_dir(  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'])) {
+      //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
+        if (//!is_dir('/app/web/toelab/') 
+        //|| 
+        !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
+        ) {
+
             echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
         }
         //var_dump($ini_array);
@@ -30,7 +34,7 @@ class ls
         //var_dump($oripath);
         //var_dump($ini_array['percorsi']['oripath']);
         $directory = new DirectoryIterator(dirname(__FILE__));
-        $di = str_replace('include', '', $directory->getPath());
+        $di = str_replace('include', '', __DIR__);
 
 
         foreach ($oripath as $f) {
@@ -43,7 +47,9 @@ class ls
         if ($dir == 1) {
             $lpath = glob($di . $ini_array['percorsi']['toelab'] . '*.' . $search, GLOB_BRACE);
             foreach ($lpath as $f) {
-                array_push($res, basename($f));
+                if (!file_exists($di . $ini_array['percorsi']['procfiles'] . (basename($f)))) {
+                    array_push($res, basename($f));
+                }
             }
         } else {
             $lpath = glob($di . $ini_array['percorsi']['procfiles'] . '*.' . $search, GLOB_BRACE);
