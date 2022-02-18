@@ -238,6 +238,7 @@ EOT;
 
 //echo $riga;
 
+
 $f = $ls->creafile($riga);
 
 if (strlen($f) > 3) {
@@ -249,7 +250,7 @@ if (strlen($f) > 3) {
 <table style="height: 94px; margin-left: auto; margin-right: auto;" 
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
-<a href="./{$t}">Scarica FIle Elaborato</a></h1><br/>
+<a href="./{$t}">Scarica File Ditte</a></h1><br/>
 </td></tbody></table>
 EOT;
   } else {
@@ -262,6 +263,27 @@ EOT;
     EOT;
   }
 }
+
+
+$riga='';
+$contaid = 1;
+foreach ($elef as $t) {
+  $riga = $riga . $pfs-> create_Ana(basename($t), $contaid,$_POST['state']);
+  $contaid =$contaid + 1;
+}
+
+//echo ($riga);
+
+$f = $ls->creafile($riga,2);
+$v = basename($f);
+echo <<<EOT
+<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+border="1" width="311" cellspacing="10" cellpadding="10">
+<tbody><TD><BR><H1>
+<a href="./{$v}">Scarica File ANAGRAFICHE </a></h1><br/>
+</td></tbody></table>
+EOT;
+
 //$eleb=($ls->elefile(1));
 //$eleb2=($ls->elefile(2));
 //var_dump($eleb);

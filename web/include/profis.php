@@ -2,6 +2,47 @@
 <?php
 class profis
 {
+    function create_Ana($file, $id=null, $ateco)
+    {
+
+        $ind=$id;
+    $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+    //$ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
+    $ateco=str_pad(str_replace('.','',$ateco),6,' ');
+    $ext = $ini_array['Parametri']['estensione'];
+    $sep=$ini_array['Parametri']['sep'];
+    $f = $file;
+    ((is_null($ind) == true) ? $ind = 1 : $ind);
+    $directory = new DirectoryIterator(dirname(__FILE__));
+    $di = str_replace('include', '', $directory->getPath());
+    $file_ = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+    //file2 = file_get_contents($file_);
+    $row='';
+    if ($file = fopen($file_, "r")) {
+        while(!feof($file)) {
+            $line =ltrim(rtrim( fgets($file)));
+          
+           $myArray = explode(';', $line);
+          // var_dump($myArray);
+          if ($myArray[6]<>'Partita iva') {
+              $row=$row.'"AGE"'.$sep.'"'. $myArray[6].'"'
+              .$sep.'"'.$myArray[7].'"'.$sep.'"'.$myArray[0].'"'.$sep. PHP_EOL;
+              // echo gettype($line);
+         //   echo $row .'<br><br>';
+            # do same stuff with the $line
+          }
+    
+    
+        }
+        fclose($file);
+    }
+    
+    //echo $row.'<br>';
+    return $row;
+        
+    }
+
+
 function creaditta_File($file,$id=null, $ateco){
 $ind=$id;
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);

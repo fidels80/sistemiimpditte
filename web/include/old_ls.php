@@ -29,8 +29,6 @@ class ls
         }
         $search = $search . '}';
         $search = str_replace(',}', '}', $search);
-       // echo '.\\' . $ini_array['percorsi']['oripath'] . '*.' . $search;
-        
         $oripath = glob('.\\' . $ini_array['percorsi']['oripath'] . '*.' . $search, GLOB_BRACE);
         // glob($ini_array['percorsi']['oripath'] . $ext);
         //var_dump($oripath);
@@ -132,12 +130,6 @@ class ls
     {
 
 
-
-       // $this->withoutRounding(19.99, 2);// Return "19.99"
-       // $this-> withoutRounding(1.505, 2);// Return "1.50"
-       // $this->withoutRounding(5.1, 2);// Return "5.10"
-        
-
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
 
@@ -158,6 +150,125 @@ class ls
         $subnest_covid = ($data->Children("ns8", TRUE)->Order->Children("ns2", TRUE)->OrderLine);
         $subnest_order4 =        ($data->Children("ns4", TRUE)->Order->Children("ns3", TRUE)->OrderLine);
 
+
+        if (get_object_vars($subnest) <> false || count($subnest) <> 0) {
+            $row = "";
+            $row = "TES";
+            try {
+                $dt1 =     strtotime($data->Order->Children("cbc", TRUE)->IssueDate);
+                $dt = date("d/m/Y", $dt1);
+
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->Children("cac", TRUE)
+                    ->BuyerCustomerParty->Children("cac", TRUE)->Party
+                    ->Children("cac", TRUE)->PartyTaxScheme->Children("cbc", TRUE)->CompanyID;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->Children("cbc", TRUE)->ID .$sep.$sep.$sep.$sep 
+                . PHP_EOL;
+                foreach ($data->Order->Children("cac", TRUE)->OrderLine as $line) {
+                    $row = $row . "RIG" . $sep   . $dt .$sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->Children("cac", true)->LineItem->children("cac", true)->Item->
+                    children("cac", true)->BuyersItemIdentification->children("cbc", true)->ID . $sep.$sep;
+                    $row = $row . $line->Children("cac", true)->LineItem->children("cbc", true)->Quantity;
+                    $row = $row . $sep . $line->Children("cac", true)->LineItem->children("cac", true)
+                    ->Price->children("cbc", true)->PriceAmount .
+                        PHP_EOL;
+                }
+            } catch (Exception $var) {
+                print $var->getMessage();
+            }
+            $di = str_replace('include', '', $directory->getPath());
+            $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+            copy($xml, $di . $ini_array['percorsi']['procfiles'] . (basename($f)));
+            //echo $xml;
+            unlink($xml);
+            return $row;
+        } elseif (get_object_vars($subnest_covid) <> false || count($subnest_covid) <> 0) {
+            //   echo '<tr><td> Ordine covid</tr></td>';
+            $tmp_xml = file_get_contents($file); //fread(fopen($file,"r"),$file);
+            // var_dump($testo);
+            $tmp_file = fopen("_" . basename($file), "w");
+            fwrite($tmp_file, $tmp_xml);
+            $tmp_xml = str_replace("ns8:", "", $tmp_xml);
+            $tmp_xml = str_replace("ns2:", "", $tmp_xml);
+            $tmp_file = fopen("_" . basename($file), "w");
+            fwrite($tmp_file, $tmp_xml);
+            $data =  new SimpleXmlElement("_" . basename($file), null, true);
+            try {
+                $row = "";
+                $row = "TES";
+                $dt1 =     strtotime($data->Order->IssueDate);
+                $dt = date("d/m/Y", $dt1);
+
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
+                    ->PartyTaxScheme->CompanyID;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
+                //   echo '<tr><td>' . $row . '</tr></td>';
+                foreach ($data->Order->OrderLine as $line) {
+
+                    $row = $row . "RIG" . "$sep"   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
+                    $row = $row . $line->LineItem->Quantity;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
+                }
+
+
+
+                $di = str_replace('include', '', $directory->getPath());
+                $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+                copy($xml, $di . $ini_array['percorsi']['procfiles'] . (basename($f)));
+                //     echo $row;
+                unlink($xml);
+                unlink("_" . basename($file));
+                return $row;
+            } catch (Exception $var) {
+                print $var->getMessage();
+            }
+        } elseif ( //get_object_vars($subnest_order4) <> false || count($subnest_order4) <> 0 && 
+            1 == 2
+        ) {
+            $tmp_xml = file_get_contents($file); //fread(fopen($file,"r"),$file);
+            // var_dump($testo);
+            $tmp_file = fopen("_" . basename($file), "w");
+            fwrite($tmp_file, $tmp_xml);
+            $tmp_xml = str_replace("ns4:", "", $tmp_xml);
+            $tmp_xml = str_replace("ns3:", "", $tmp_xml);
+            $tmp_file = fopen("_" . basename($file), "w");
+            fwrite($tmp_file, $tmp_xml);
+            $data =  new SimpleXmlElement("_" . basename($file), null, true);
+            try {
+                $row = "";
+                $row = "TES";
+                $dt1 =     strtotime($data->Order->IssueDate);
+                $dt = date("d/m/Y", $dt1);
+
+                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
+                    ->PartyTaxScheme->CompanyID;
+                $row = $row . $sep   . $dt;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
+                //   echo '<tr><td>' . $row . '</tr></td>';
+                foreach ($data->Order->OrderLine as $line) {
+
+                    $row = $row . "RIG" . $sep   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
+                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
+                    $row = $row . $line->LineItem->Quantity;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
+                }
+
+
+
+                $di = str_replace('include', '', $directory->getPath());
+                $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+                copy($xml, $di . $ini_array['percorsi']['procfiles'] . (basename($f)));
+                //     echo $row;
+                unlink($xml);
+                unlink("_" . basename($file));
+                return $row;
+            } catch (Exception $var) {
+                print $var->getMessage();
+            }
+        } else {
+
             $tmp_xml = file_get_contents($file); //fread(fopen($file,"r"),$file);
             // var_dump($testo);
             $tmp_file = fopen("_" . basename($file), "w");
@@ -172,8 +283,7 @@ class ls
             $tmp_xml = str_replace("ns8:", "", $tmp_xml);
             $tmp_xml = str_replace("ns9:", "", $tmp_xml);
 
-*/ 
- 
+*/
 
             $ns = $ini_xml['NS']['name_space'];
             //var_dump($ns);
@@ -204,24 +314,14 @@ class ls
                 $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
                     ->PartyTaxScheme->CompanyID;
                 $row = $row . $sep   . $dt;
-                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep ;//. PHP_EOL;
-                $row = $row .$sep.'"[CedentePrestatore|RiferimentoAmministrazione|'.
-                $data->Order->BuyerCustomerParty->Party->
-                EndpointID."]".$sep;
-                $row = $row . '[DatiOrdineAcquisto|Data|'.$dt.']'.$sep;
-                $row = $row .'[DatiOrdineAcquisto|IdDocumento|'.   $data->Order->ID ; 
-                $row = $row .']"'.$sep.$sep;
-                $row = $row . str_replace("CIG:", "",$data->Order->OriginatorDocumentReference->ID).$sep; 
-                $row = $row . PHP_EOL;
+                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep . PHP_EOL;
                 //   echo '<tr><td>' . $row . '</tr></td>';
                 foreach ($data->Order->OrderLine as $line) {
 
                     $row = $row . "RIG" . $sep   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
                     $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
                     $row = $row . $line->LineItem->Quantity;
-                    $row = $row . $sep . $this->withoutRounding($line->LineItem->Price->PriceAmount,3) .$sep.$sep;
-                    $row=$row.$line->LineItem->Item->Name.' '.$line->Note.$sep;
-                    $row=$row.$this->withoutRounding($line->LineItem->LineExtensionAmount,3) .$sep. PHP_EOL;
+                    $row = $row . $sep . $line->LineItem->Price->PriceAmount . PHP_EOL;
                 }
 
 
@@ -237,20 +337,21 @@ class ls
                 //  print $var->getMessage();
                 echo "<B>il File {$f}  potrebbe non essere CORRETTO!!!!</B><br><B>Non presenta al'interno i dati relativi a un ordine</B><br><BR>";
             }
-        
+        }
     }
 
-    function creafile($rows,$tipo=null)
+
+
+
+
+
+
+
+    function creafile($rows)
     {
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
-        $di=str_replace('include', '', __DIR__);
-     //  echo $di.'<br>';
-      //  echo $di.  $ini_array['Parametri']['NomeOut']  . '.csv';
-       if ($tipo==null) {
-           $nfile =$di . $ini_array['Parametri']['NomeOut']  . '.csv';
-       }elseif($tipo==2) {
-        $nfile =$di . $ini_array['Parametri']['NomeANA'] . '.csv';
-        }
+
+        $nfile = $ini_array['percorsi']['output'] . $ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv';
         $tmpfile = fopen($nfile, "w")
             or   $this->extremesave($rows);
         /*die("NON POSSO CREARE IL FILE DI OUTPUT!! COntrollare cartella e permessi!! "
@@ -258,20 +359,10 @@ class ls
 );*/
         fwrite($tmpfile, $rows);
         fclose($tmpfile);
-      if ($tipo==null) {
-          $webf = fopen($di.$ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv', "w") or
+        $webf = fopen($ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv', "w") or
             $this->extremesave($rows);
-      
-          fwrite($webf, $rows);
-      }elseif($tipo==2){
-        $webf = fopen($di.$ini_array['Parametri']['NomeANA']. '.csv', "w") or
-        $this->extremesave($rows);
-  
-      fwrite($webf, $rows);
+        fwrite($webf, $rows);
 
-
-
-      }
         if (strlen($rows) > 10) {
 
             return $nfile;
@@ -282,7 +373,7 @@ class ls
     function extremesave($row)
     {
 
-        fwrite("nso_" . date('m-d-Y_hia') . '.csv', $row);
+        fwrite("c:\nso_" . date('m-d-Y_hia') . '.csv', $row);
         die("NON POSSO CREARE IL FILE DI OUTPUT  !! COntrollare cartella e permessi!! ");
     }
 
@@ -332,36 +423,11 @@ EOT;
         return $html;
     }
 
+function processafile_xls($file, $ind = null){
 
-// Works with positive and negative numbers, and integers and floats and strings
-function withoutRounding($number, $total_decimals) {
-    $number = (string)$number;
-    if($number === '') {
-        $number = '0';
-    }
-    if(strpos($number, '.') === false) {
-        $number .= '.';
-    }
-    $number_arr = explode('.', $number);
+echo $file.'<br></td></tr><tr><td>';
 
-    $decimals = substr($number_arr[1], 0, $total_decimals);
-    if($decimals === false) {
-        $decimals = '0';
-    }
-
-    $return = '';
-    if($total_decimals == 0) {
-        $return = $number_arr[0];
-    } else {
-        if(strlen($decimals) < $total_decimals) {
-            $decimals = str_pad($decimals, $total_decimals, '0', STR_PAD_RIGHT);
-        }
-        $return = $number_arr[0] . '.' . $decimals;
-    }
-    return $return;
 }
-
-// How to use:
 
 
 }
