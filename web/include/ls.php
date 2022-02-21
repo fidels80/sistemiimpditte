@@ -17,12 +17,13 @@ error_reporting(E_ALL);
         $ext = $ini_array['Parametri']['estensione'];
        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
       //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
-        if (//!is_dir('/app/web/toelab/') 
-        //|| 
-        !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
+        if ( !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
         ) {
 
+            if (!is_dir('/app/web/toelab/')){
+                
             echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
+            }
         }
         //var_dump($ini_array);
         $ext = $ini_array['EXTENSION'];
