@@ -26,7 +26,7 @@ echo $tmpFilePath.'<br>';
     //Setup our new file path
     $newFilePath ="./".$el . $_FILES['file']['name'][$i];
     //(__DIR__).
-    echo $newFilePath;
+    echo $newFilePath'<br>';
     
     //Upload the file into the temp dir
     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
