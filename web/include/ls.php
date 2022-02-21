@@ -16,7 +16,7 @@ class ls
         $ext = $ini_array['Parametri']['estensione'];
       //  echo str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'];
         // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
-      //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
+          echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
         if (//!is_dir('/app/web/toelab/') 
         //|| 
         !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
