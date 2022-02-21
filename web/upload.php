@@ -45,7 +45,13 @@ ob_end_flush();
 }
 else
 {
-    die("errore in upload!!!");
-}
+  $newFilePath='/app/web/toelab2/'.$_FILES['file']['name'][$i];
+    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+
+    }
+    else {
+        die("errore in upload!!!");
+    }
+  }
 //header('Location: another-php-file.php'); exit();
 ?>
