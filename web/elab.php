@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
 include(__DIR__.'/include/profis.php');
@@ -241,26 +244,27 @@ EOT;
 
 
 $f = $ls->creafile($riga);
-
+$html='';
+ 
 if (strlen($f) > 3) {
 
   $t = basename($f);
 
   if ($ini_array['Parametri']['wbout'] == 1) {
-    echo <<<EOT
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+    $html= <<<EOT
+<td><tr><table style="height: 54px; margin-left: auto; margin-right: auto;" 
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="{$t}">Scarica File Ditte</a></h1><br/>
-</td></tbody></table>
+</td></tbody></table></tr>
 EOT;
   } else {
 
-    echo <<<EOT
-    <table style="height: 94px; margin-left: auto; margin-right: auto;" 
+    $html= <<<EOT
+    <td><tr> <table style="height: 54px; margin-left: auto; margin-right: auto;" 
     border="1" width="311" cellspacing="10" cellpadding="10">
     <tbody><TD><BR><H1>File Elaborato e disponibile in:<br> {$ini_array['percorsi']['output']}
-    </td></tbody></table>
+    </td></tbody></table></tr>
     EOT;
   }
 }
@@ -277,12 +281,12 @@ foreach ($elef as $t) {
 
 $f = $ls->creafile($riga,2);
 $v = basename($f);
-echo <<<EOT
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+$html=$html. <<<EOT
+<tr><table style="height: 54px; margin-left: auto; margin-right: auto;" 
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="{$v}">Scarica File ANAGRAFICHE </a></h1><br/>
-</td></tbody></table>
+</td></tbody></table></tr>
 EOT;
 
 //$eleb=($ls->elefile(1));
@@ -313,3 +317,39 @@ $ls->reset($f);
 $ls->reset($f);
     }
 
+
+    $pfs->zipper();
+
+echo <<<EOT
+<br><br>
+<table style=height:"margin-left: auto; margin-right: auto;" 
+border="1" width="100%" cellspacing="10" cellpadding="10">
+<tbody>
+<tr>
+<td style="width: 227;">
+<div>
+<div><BR><H1>
+<a href="{$t}">Scarica File Ditte</a></h1><br/></div>
+</div>
+</td>
+<td style="width: 227px;">
+<div>
+<div><BR><H1>
+<a href="{$v}">Scarica File ANAGRAFICHE </a></h1></br></div>
+</div>
+</td>
+<td style="width: 235px;">
+<div>
+<div><BR><H1>
+<a href="{$t}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+EOT;
+  
+
+?>

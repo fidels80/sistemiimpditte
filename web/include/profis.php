@@ -37,12 +37,11 @@ class profis
 
                 $arr_row = explode(';', $line);
                 // var_dump($myArray);
-                if ($arr_row[6] != 'Partita iva') {
-                    if (strlen($arr_row[6]) != 0) {
+                if (!strpos($line, 'Partita iva') && strlen($line) != 0) {
+                   
                         $row = $row . '"AGE"' . $sep . '"' . $arr_row[6] . '"'
                             . $sep . '"' . $arr_row[7] . '"' . $sep . '"' . $arr_row[0] . '"' . $sep . PHP_EOL;
-                    }
-
+              
                 }
 
             }
@@ -333,6 +332,28 @@ class profis
         $t = file_get_contents($file);
         return $t;
     }
+
+
+public function zipper() {
+    $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+  $uno=  $ini_array['Parametri']['NomeOut'].'.csv';
+  $due=  $ini_array['Parametri']['NomeANA'].'.csv';
+  
+  $files = array($uno, $due );
+    $zipname = $ini_array['Parametri']['ZipFile'].'.zip';
+    $zip = new ZipArchive;
+    $zip->open($zipname, ZipArchive::CREATE);
+    foreach ($files as $file) {
+      $zip->addFile($file);
+    }
+    $zip->close();
+    $di=str_replace('include', '', __DIR__);
+return $di .$ini_array['Parametri']['ZipFile'].'.zip';
+
+
+}
+
+
 
 }
 
