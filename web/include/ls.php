@@ -10,13 +10,10 @@ class ls
     //    include __DIR__ . '/include/ls.php';
     //    include __DIR__ . '/include/PB.php';
 //str_replace("ns8:", "", $tmp_xml);
-
-
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
-      //  echo str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'];
-        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
-          echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
+       // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
+      //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
         if (//!is_dir('/app/web/toelab/') 
         //|| 
         !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
@@ -32,8 +29,6 @@ class ls
         }
         $search = $search . '}';
         $search = str_replace(',}', '}', $search);
-       // echo '.\\' . $ini_array['percorsi']['oripath'] . '*.' . $search;
-        
         $oripath = glob('.\\' . $ini_array['percorsi']['oripath'] . '*.' . $search, GLOB_BRACE);
         // glob($ini_array['percorsi']['oripath'] . $ext);
         //var_dump($oripath);
