@@ -3,6 +3,7 @@ include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
 include(__DIR__.'/include/profis.php');
 $pfs=new profis();
+error_reporting(E_ALL);
 
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 $ls = new ls();
@@ -250,7 +251,7 @@ if (strlen($f) > 3) {
 <table style="height: 94px; margin-left: auto; margin-right: auto;" 
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
-<a href="./{$t}">Scarica File Ditte</a></h1><br/>
+<a href="{$t}">Scarica File Ditte</a></h1><br/>
 </td></tbody></table>
 EOT;
   } else {
@@ -280,7 +281,7 @@ echo <<<EOT
 <table style="height: 94px; margin-left: auto; margin-right: auto;" 
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
-<a href="./{$v}">Scarica File ANAGRAFICHE </a></h1><br/>
+<a href="{$v}">Scarica File ANAGRAFICHE </a></h1><br/>
 </td></tbody></table>
 EOT;
 
