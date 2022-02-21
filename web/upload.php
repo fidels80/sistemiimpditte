@@ -24,11 +24,12 @@ echo $tmpFilePath.'<br>';
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
-    $newFilePath =(__DIR__).$el . $_FILES['file']['name'][$i];
+    $newFilePath ="./".$el . $_FILES['file']['name'][$i];
+    //(__DIR__).
     echo $newFilePath;
     
     //Upload the file into the temp dir
-    if(copy($tmpFilePath, $newFilePath)) {
+    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
      //   redirect_with_message('The file was uploaded successfully.', FLASH_SUCCESS);
       
      //Handle other code here
