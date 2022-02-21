@@ -4,6 +4,18 @@ class ls
 {
 
     public $ini_array = array();
+
+    function folder_exist($folder)
+    {
+        // Get canonicalized absolute pathname
+        $path = realpath($folder);
+    
+        // If it exist, check if it's a directory
+        return ($path !== false AND is_dir($path)) ? $path : false;
+    }
+
+
+
     function elefile($dir)
     {
         ini_set('display_errors', '1');
@@ -13,13 +25,17 @@ error_reporting(E_ALL);
     //    include __DIR__ . '/include/ls.php';
     //    include __DIR__ . '/include/PB.php';
 //str_replace("ns8:", "", $tmp_xml);
+
+
+
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
       //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
         if ( !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
         ) {
-
+            mkdir('/app/web/toelab/' . $dirname, 0777);
+            echo $this->folder_exist('/app/web/toelab/');
             if (!is_dir('/app/web/toelab/')){
                 
             echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
