@@ -14,7 +14,7 @@ class ls
 
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
-        echo str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath']);
+        echo str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'];
         // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
       //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
         if (//!is_dir('/app/web/toelab/') 
