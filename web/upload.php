@@ -24,7 +24,7 @@ echo $tmpFilePath.'<br>';
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
-    $newFilePath ="./".$el . $_FILES['file']['name'][$i];
+    $newFilePath =".".$el . $_FILES['file']['name'][$i];
     //(__DIR__).
     echo $newFilePath.'<br>';
     
