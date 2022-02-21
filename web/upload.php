@@ -47,7 +47,8 @@ for( $i=0 ; $i < $total ; $i++ ) {
     else {
 
 
-      $moved = move_uploaded_file($_FILES["file"]["tmp_name"],'/app/web/toelab2/' . $_FILES['file']['name'][$i] );
+      $moved = move_uploaded_file($_FILES["file"]["tmp_name"][$i],
+      '/app/web/toelab2/' . $_FILES['file']['name'][$i] );
 
       if( $moved ) {
         echo "Successfully uploaded";         
