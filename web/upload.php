@@ -20,13 +20,13 @@ for( $i=0 ; $i < $total ; $i++ ) {
 
   //Get the temp file path
   $tmpFilePath = $_FILES['file']['tmp_name'][$i];
-echo $tmpFilePath.'<br>';
+//echo $tmpFilePath.'<br>';
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
     $newFilePath =(__DIR__).$el . $_FILES['file']['name'][$i];
     //(__DIR__).
-    echo $newFilePath.'<br>';
+  //  echo $newFilePath.'<br>';
     
     //Upload the file into the temp dir
     if (move_uploaded_file($tmpFilePath, $newFilePath)) {
@@ -35,7 +35,7 @@ echo $tmpFilePath.'<br>';
      //Handle other code here
     } else {
      $newFilePath='/app/web/toelab2/'.$_FILES['file']['name'][$i];
-     echo $newFilePath.'<br>cc';
+   //  echo $newFilePath.'<br>cc';
        if (move_uploaded_file($tmpFilePath, $newFilePath)) {
    
        }
