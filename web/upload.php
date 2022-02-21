@@ -42,6 +42,22 @@ echo $tmpFilePath.'<br>';
         
     
     else {
+
+
+      $moved = move_uploaded_file($_FILES["file"]["tmp_name"],'/app/web/toelab2/' . $_FILES['file']['name'][$i] );
+
+      if( $moved ) {
+        echo "Successfully uploaded";         
+      } else {
+        echo "Not uploaded because of error #".$_FILES["file"]["error"];
+      }
+
+
+
+
+
+
+
       $chk=99;}
     }
   }
