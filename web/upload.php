@@ -53,7 +53,7 @@ for( $i=0 ; $i < $total ; $i++ ) {
       if( $moved ) {
         echo "Successfully uploaded";         
       } else {
-        echo "Not uploaded because of error #".$_FILES["file"]["error"];
+   print_r($_FILES["file"]["error"]);
       }
 
 
