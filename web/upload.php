@@ -29,12 +29,21 @@ echo $tmpFilePath.'<br>';
     echo $newFilePath.'<br>';
     
     //Upload the file into the temp dir
-    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
-     //   redirect_with_message('The file was uploaded successfully.', FLASH_SUCCESS);
+    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+        //   redirect_with_message('The file was uploaded successfully.', FLASH_SUCCESS);
       
      //Handle other code here
-
-    }else {$chk=99;}
+    } else {
+     $newFilePath='/app/web/toelab2/'.$_FILES['file']['name'][$i];
+     echo $newFilePath.'<br>cc';
+       if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+   
+       }
+        
+    
+    else {
+      $chk=99;}
+    }
   }
 }
 
@@ -45,14 +54,9 @@ ob_end_flush();
 }
 else
 {
-  $newFilePath='/app/web/toelab2/'.$_FILES['file']['name'][$i];
-  echo $newFilePath.'<br>';
-    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
-
-    }
-    else {
+ 
         die("errore in upload!!!");
-    }
+    
   }
 //header('Location: another-php-file.php'); exit();
 ?>
