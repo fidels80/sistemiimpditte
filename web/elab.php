@@ -290,3 +290,25 @@ EOT;
 //var_dump($eleb2);
 //var_dump(array_diff($eleb,$eleb2));
 //echo "bestia<br>";
+//$ls= new ls();
+//$ls->localelab();
+$directory = new DirectoryIterator(dirname(__FILE__));
+$di =str_replace('include','',$directory->getPath());
+$di=str_replace(__DIR__,'include','');
+//var_dump($ini_array);
+$lpath = glob(__DIR__.''.$ini_array['percorsi']['toelab'].'*');
+
+//echo $di.$ini_array['percorsi']['procfiles'];
+//var_dump(__DIR__.''.$ini_array['percorsi']['toelab'].'*');
+    foreach ($lpath as $f) {
+  // echo  "rimosso file {$f}<br>";
+$ls->reset($f);
+    }
+ //   echo $di.$ini_array['percorsi']['procfiles'];
+    $lpath = glob($di.''.$ini_array['percorsi']['procfiles'].'*');
+  //  var_dump($lpath);
+    foreach ($lpath as $f) {
+//   echo  "rimosso file {$f}<br>";
+$ls->reset($f);
+    }
+

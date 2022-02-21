@@ -10,6 +10,8 @@ class ls
     //    include __DIR__ . '/include/ls.php';
     //    include __DIR__ . '/include/PB.php';
 //str_replace("ns8:", "", $tmp_xml);
+
+        
         $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];

@@ -4,7 +4,25 @@
 include __DIR__ . '/include/ls.php';
 include __DIR__ . '/include/PB.php';
 $ls = new ls();
-$ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+
+
+
+
+
+
+
+$ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+
+
+$web= glob(__DIR__.'/*.csv');
+ 
+foreach ($web as $f) {
+  //echo  "rimosso file {$f}<br>";
+$ls->reset($f);
+   }
+
+
+
 $ext = $ini_array['Parametri']['estensione'];
 //$ext2=$ini_array['EXTENSION']['ext'];
 $ext2 = $ini_array['EXTENSION'];
