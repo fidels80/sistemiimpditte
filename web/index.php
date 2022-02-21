@@ -5,7 +5,9 @@ include __DIR__ . '/include/ls.php';
 include __DIR__ . '/include/PB.php';
 $ls = new ls();
 
-
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 
 
