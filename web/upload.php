@@ -46,6 +46,7 @@ ob_end_flush();
 else
 {
   $newFilePath='/app/web/toelab2/'.$_FILES['file']['name'][$i];
+  echo $newFilePath.'<br>';
     if (move_uploaded_file($tmpFilePath, $newFilePath)) {
 
     }
