@@ -5,7 +5,7 @@ session_start();
 ob_start();
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
-include(__DIR__.'/inc/functions.php');
+
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
 $ext=$ini_array['Parametri']['estensione'];
 $el=$ini_array['percorsi']['toelab'];
@@ -20,12 +20,13 @@ for( $i=0 ; $i < $total ; $i++ ) {
 
   //Get the temp file path
   $tmpFilePath = $_FILES['file']['tmp_name'][$i];
-
+echo $tmpFilePath.'<br>';
   //Make sure we have a file path
   if ($tmpFilePath != ""){
     //Setup our new file path
     $newFilePath =(__DIR__).$el . $_FILES['file']['name'][$i];
-
+    echo $newFilePath;
+    
     //Upload the file into the temp dir
     if(move_uploaded_file($tmpFilePath, $newFilePath)) {
      //   redirect_with_message('The file was uploaded successfully.', FLASH_SUCCESS);
