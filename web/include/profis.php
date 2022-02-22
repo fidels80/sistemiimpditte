@@ -69,7 +69,9 @@ class profis
         $file_ = $di . $ini_array['percorsi']['toelab'] . (basename($f));
 //file2 = file_get_contents($file_);
         $row = '';
+        $err1=0;
         if ($file = fopen($file_, "r")) {
+            $ind=0;
             while (!feof($file)) {
                 $line = ltrim(rtrim(fgets($file)));
                 //  echo $line;
@@ -77,14 +79,41 @@ class profis
                 // echo '<br><br>';
                 # do same stuff with the $line
                 $line2 = $line;
-                if (!strpos($line, 'Partita iva') && strlen($line) != 0) {
-                    $fc = $this->build_d0($ateco, $line);
-                    $fc = $fc . $this->build_d1($line, $ateco);
-                    $fc = $fc . $this->build_d2($line, $ateco);
-                    $fc = $fc . $this->build_d3($line, $ateco);
-                    $row = $row . $fc;
+
+         
+                $chk=explode(';', $line);
+                if (sizeof($chk)<>9) {
+                    echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>'.
+                    'I CAMPI PRESENTI SONO :'.sizeof($chk).'<br> E DOVREBBERO ESSERE 9'.'<br>';
+                   // fclose($file);
+                $line='';
+             
                 }
 
+                if ($ind==0
+                && strtoupper($line)<>
+                'CODICE;RAGIONE SOCIALE;TIPO SOGGETTO;DITTA  AA7;ANNOTAZIONI;TITOLARE P.IVA;PARTITA IVA;CODICE FISCALE;INDIRIZZI'
+                ){
+                    echo 'ATTENZIONE I NOMI DI COLONNA SONO ERRATI!!!!<br>'.
+                   
+                   // fclose($file);
+    $err1=1;
+
+                    }
+
+
+
+
+
+                    if (!strpos($line, 'Partita iva') && strlen($line) != 0 && $err1==0) {
+                        $fc = $this->build_d0($ateco, $line);
+                        $fc = $fc . $this->build_d1($line, $ateco);
+                        $fc = $fc . $this->build_d2($line, $ateco);
+                        $fc = $fc . $this->build_d3($line, $ateco);
+                        $row = $row . $fc;
+                    }
+                
+                $ind=$ind+1;
             }
             fclose($file);
         }

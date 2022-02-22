@@ -249,7 +249,7 @@ $html='';
 if (strlen($f) > 3) {
 
   $t = basename($f);
-
+$zzz=$t;
   if ($ini_array['Parametri']['wbout'] == 1) {
     $html= <<<EOT
 <td><tr><table style="height: 54px; margin-left: auto; margin-right: auto;" 
@@ -318,8 +318,9 @@ $ls->reset($f);
     }
 
 
-    $pfs->zipper();
-
+   $z= $pfs->zipper();
+$z=basename($z);
+$t=isset($zzz)? $zzz:'';
 echo <<<EOT
 <br><br>
 <table style=height:"margin-left: auto; margin-right: auto;" 
@@ -341,7 +342,7 @@ border="1" width="100%" cellspacing="10" cellpadding="10">
 <td style="width: 235px;">
 <div>
 <div><BR><H1>
-<a href="{$t}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/></div>
+<a href="{$z}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/></div>
 </div>
 </td>
 </tr>
