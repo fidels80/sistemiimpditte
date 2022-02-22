@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 include(__DIR__.'/include/ls.php');
 include(__DIR__.'/include/PB.php');
 include(__DIR__.'/include/profis.php');
@@ -323,32 +323,12 @@ $z=basename($z);
 $t=isset($zzz)? $zzz:'';
 echo <<<EOT
 <br><br>
-<table style=height:"margin-left: auto; margin-right: auto;" 
-border="1" width="100%" cellspacing="10" cellpadding="10">
-<tbody>
-<tr>
-<td style="width: 227;">
-<div>
-<div><BR><H1>
-<a href="{$t}">Scarica File Ditte</a></h1><br/></div>
-</div>
-</td>
-<td style="width: 227px;">
-<div>
-<div><BR><H1>
-<a href="{$v}">Scarica File ANAGRAFICHE </a></h1></br></div>
-</div>
-</td>
-<td style="width: 235px;">
-<div>
-<div><BR><H1>
-<a href="{$z}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/></div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-
+ 
+<table style="height: 54px; margin-left: auto; margin-right: auto;" 
+border="1" width="311" cellspacing="10" cellpadding="10">
+<tbody><TD><BR><H1>
+<a href="{$z}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/>
+</td></tbody></table>
 
 EOT;
   
