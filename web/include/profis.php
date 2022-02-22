@@ -159,7 +159,7 @@ class profis
         $ris = $ris . str_pad(' ', 514);
         $ris = $ris . '2021.7  ' . 'A';
         //$ateco  ;
-        echo $ris . '<br>';
+        echo '<tr><td>'.$ris . '</td></tr>';
         return $ris . PHP_EOL;
     }
     public function build_d1($line, $ateco)
@@ -178,7 +178,7 @@ class profis
         $ris = $ris . '00'; //GestContEntiTerSet
         $ris = $ris . str_pad(' ', 528); //blk
         $ris = $ris . '2021.7  ' . 'A' . PHP_EOL;
-        echo $ris . '<br>';
+        echo '<tr><td>'.$ris . '</td></tr>';
         return $ris;
     }
     public function build_d2($line, $ateco)
@@ -235,7 +235,7 @@ class profis
         $ris = $ris . '  '; //cau
         $ris = $ris . str_pad(' ', 387); //blk
         $ris = $ris . '2021.7  ' . 'A' . PHP_EOL;
-        echo $ris . '<br>';
+        echo '<tr><td>'.$ris . '</td></tr>';
         return $ris;
     }
     public function build_d3($line, $ateco)
@@ -300,7 +300,7 @@ class profis
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //comdatispesescuole
         $ris = $ris . str_pad(' ', 360); //blk
         $ris = $ris . '2021.7  ' . 'A' . PHP_EOL;
-        echo $ris . '<br>';
+        echo '<tr><td>'.$ris . '</td></tr>';
         return $ris;
     }
 
