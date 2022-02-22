@@ -34,7 +34,8 @@ error_reporting(E_ALL);
       //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
         if ( !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
         ) {
-            mkdir('/app/web/toelab/' . $dirname, 0777);
+
+            mkdir('/app/web/toelab/' , 0777);
             echo $this->folder_exist('/app/web/toelab/');
             if (!is_dir('/app/web/toelab/')){
                 
