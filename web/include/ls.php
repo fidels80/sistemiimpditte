@@ -271,21 +271,20 @@ error_reporting(E_ALL);
         }
         $tmpfile = fopen($nfile, "w")
             or   $this->extremesave($rows);
-        /*die("NON POSSO CREARE IL FILE DI OUTPUT!! COntrollare cartella e permessi!! "
-    .$ini_array['percorsi']['output'].'Sistemi_Roma_'.date('m-d-Y_hia').'.csv'
-);*/
+
         fwrite($tmpfile, $rows);
         fclose($tmpfile);
+
       if ($tipo==null) {
           $webf = fopen($di.$ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv', "w") or
             $this->extremesave($rows);
       
           fwrite($webf, $rows);
       }elseif($tipo==2){
-        $webf = fopen($di.$ini_array['Parametri']['NomeANA']. '.csv', "w") or
-        $this->extremesave($rows);
+        //$webf = fopen($di.$ini_array['Parametri']['NomeANA']. '.csv', "w") or
+        //$this->extremesave($rows);
   
-      fwrite($webf, $rows);
+      //fwrite($webf, $rows);
 
 
 

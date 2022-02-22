@@ -36,6 +36,13 @@ class profis
                 $line = ltrim(rtrim(fgets($file)));
 
                 $arr_row = explode(';', $line);
+                if (sizeof($arr_row)<>9) {
+              //      echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>'.
+               //     'I CAMPI PRESENTI SONO :'.sizeof($chk).'<br> E DOVREBBERO ESSERE 9'.'<br>';
+                   // fclose($file);
+                $line='';
+             
+                }
                 // var_dump($myArray);
                 if (!strpos($line, 'Partita iva') && strlen($line) != 0) {
                    
@@ -97,7 +104,7 @@ class profis
                     echo 'ATTENZIONE I NOMI DI COLONNA SONO ERRATI!!!!<br>'.
                    
                    // fclose($file);
-    $err1=1;
+                 $err1=1;
 
                     }
 
