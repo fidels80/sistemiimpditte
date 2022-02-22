@@ -296,7 +296,7 @@ $rr = "accept='.{$ext}";
   IMMETTI CODICE ATECO
 <select id='ateco' class="js-example-data-array-selected" style="width: 300px"  name="state">
 <option></option>
-</label>
+</label>  
 <input name="submit" type="submit" value="Elaborazione Dati"
 />
 </form></td>

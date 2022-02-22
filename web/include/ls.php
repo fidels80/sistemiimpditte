@@ -5,48 +5,44 @@ class ls
 
     public $ini_array = array();
 
-    function folder_exist($folder)
+    public function folder_exist($folder)
     {
         // Get canonicalized absolute pathname
         $path = realpath($folder);
-    
+
         // If it exist, check if it's a directory
-        return ($path !== false AND is_dir($path)) ? $path : false;
+        return ($path !== false and is_dir($path)) ? $path : false;
     }
 
-
-
-    function elefile($dir)
+    public function elefile($dir)
     {
         ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+        ini_set('display_startup_errors', '1');
+        error_reporting(E_ALL);
 
-    //    include __DIR__ . '/include/ls.php';
-    //    include __DIR__ . '/include/PB.php';
-//str_replace("ns8:", "", $tmp_xml);
+        //    include __DIR__ . '/include/ls.php';
+        //    include __DIR__ . '/include/PB.php';
+        //str_replace("ns8:", "", $tmp_xml);
 
-
-
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
-       // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
-      //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
-        if ( !is_dir(str_replace('include', '', __DIR__).$ini_array['percorsi']['oripath'])
+        // echo  str_replace('include','',__DIR__).$ini_array['percorsi']['oripath'];
+        //   echo  (str_replace('include','',__DIR__).$ini_array['percorsi']['oripath']);
+        if (!is_dir(str_replace('include', '', __DIR__) . $ini_array['percorsi']['oripath'])
         ) {
 
-            mkdir('/app/web/toelab/' , 0777);
-           // echo $this->folder_exist('/app/web/toelab/');
-            if (!is_dir('/app/web/toelab/')){
-                
-            echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
+            mkdir('/app/web/toelab/', 0777);
+            // echo $this->folder_exist('/app/web/toelab/');
+            if (!is_dir('/app/web/toelab/')) {
+
+                echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
             }
         }
         //var_dump($ini_array);
         $ext = $ini_array['EXTENSION'];
         $search = '{';
         foreach ($ext['ext'] as $value) {
-            $search = $search  . str_replace('.', '', $value) . ',';
+            $search = $search . str_replace('.', '', $value) . ',';
         }
         $search = $search . '}';
         $search = str_replace(',}', '}', $search);
@@ -56,7 +52,6 @@ error_reporting(E_ALL);
         //var_dump($ini_array['percorsi']['oripath']);
         $directory = new DirectoryIterator(dirname(__FILE__));
         $di = str_replace('include', '', __DIR__);
-
 
         foreach ($oripath as $f) {
             if (!file_exists($di . $ini_array['percorsi']['procfiles'] . (basename($f)))) {
@@ -80,14 +75,12 @@ error_reporting(E_ALL);
             }
         }
 
- 
         return array_unique($res);
     }
 
-
-    function localelab()
+    public function localelab()
     {
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
         $directory = new DirectoryIterator(dirname(__FILE__));
         $di = str_replace('include', '', $directory->getPath());
@@ -97,9 +90,9 @@ error_reporting(E_ALL);
     }
 
     /*da finire  che per il valfile  non si riesce a rimediare un xsd del nso da nessuna parte */
-    function valfile($file)
+    public function valfile($file)
     {
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
 
         $f = $file;
         $directory = new DirectoryIterator(dirname(__FILE__));
@@ -108,17 +101,16 @@ error_reporting(E_ALL);
         $xsd = $di . 'include\\test100.xsd';
         $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
 
-
         libxml_use_internal_errors(true);
         libxml_clear_errors();
         if (isset($xsd) && isset($xml)) {
             $cxml = fopen($xml, "r");
             $cxsd = fopen($xsd, "r");
             /*      if ($cxml == false) {
-            return "FILE  XML NON TROVATO";
+        return "FILE  XML NON TROVATO";
         }
         if ($cxsd == false) {
-            return "FILE  XSD NON TROVATO";
+        return "FILE  XSD NON TROVATO";
         }*/
         } else {
             // $xsd = "/var/www/html/main/basic/xml/Schema_VFPR12.xsd";
@@ -128,7 +120,7 @@ error_reporting(E_ALL);
             $test = fopen($xml, "r");
             if ($test) {
                 $x = fread($test, filesize($xml));
-                // return $x;   
+                // return $x;
             }
         }
 
@@ -140,28 +132,22 @@ error_reporting(E_ALL);
         } else {
 
             echo $file . 'fatto';
-            return $file . 'fatto';;
+            return $file . 'fatto';
         }
     }
 
-
-
-
-    function processafile_xml($file, $ind = null)
+    public function processafile_xml($file, $ind = null)
     {
 
+        // $this->withoutRounding(19.99, 2);// Return "19.99"
+        // $this-> withoutRounding(1.505, 2);// Return "1.50"
+        // $this->withoutRounding(5.1, 2);// Return "5.10"
 
-
-       // $this->withoutRounding(19.99, 2);// Return "19.99"
-       // $this-> withoutRounding(1.505, 2);// Return "1.50"
-       // $this->withoutRounding(5.1, 2);// Return "5.10"
-        
-
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
-        $ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+        $ini_xml = parse_ini_file("xml.ini", true/* will scope sectionally */);
 
         $ext = $ini_array['Parametri']['estensione'];
-        $sep=$ini_array['Parametri']['sep'];
+        $sep = $ini_array['Parametri']['sep'];
         $f = $file;
         ((is_null($ind) == true) ? $ind = 1 : $ind);
         $directory = new DirectoryIterator(dirname(__FILE__));
@@ -173,123 +159,117 @@ error_reporting(E_ALL);
         $namespaces = $data->getNamespaces(true);
         $new = ($data->Order);
         $con = json_encode($new);
-        $subnest = ($data->Order->Children("cac", TRUE)->OrderLine);
-        $subnest_covid = ($data->Children("ns8", TRUE)->Order->Children("ns2", TRUE)->OrderLine);
-        $subnest_order4 =        ($data->Children("ns4", TRUE)->Order->Children("ns3", TRUE)->OrderLine);
+        $subnest = ($data->Order->Children("cac", true)->OrderLine);
+        $subnest_covid = ($data->Children("ns8", true)->Order->Children("ns2", true)->OrderLine);
+        $subnest_order4 = ($data->Children("ns4", true)->Order->Children("ns3", true)->OrderLine);
 
-            $tmp_xml = file_get_contents($file); //fread(fopen($file,"r"),$file);
-            // var_dump($testo);
-            $tmp_file = fopen("_" . basename($file), "w");
-            fwrite($tmp_file, $tmp_xml);
-            /*            $tmp_xml = str_replace("ns1:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns2:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns3:", "", $tmp_xml);
-           $tmp_xml = str_replace("ns4:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns5:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns6:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns7:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns8:", "", $tmp_xml);
-            $tmp_xml = str_replace("ns9:", "", $tmp_xml);
+        $tmp_xml = file_get_contents($file); //fread(fopen($file,"r"),$file);
+        // var_dump($testo);
+        $tmp_file = fopen("_" . basename($file), "w");
+        fwrite($tmp_file, $tmp_xml);
+        /*            $tmp_xml = str_replace("ns1:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns2:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns3:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns4:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns5:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns6:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns7:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns8:", "", $tmp_xml);
+        $tmp_xml = str_replace("ns9:", "", $tmp_xml);
 
-*/ 
- 
+         */
 
-            $ns = $ini_xml['NS']['name_space'];
-            //var_dump($ns);
-            foreach ($ns as $val) {
-                //  echo "<br>".$val;
-                $tmp_xml = str_replace($val, "", $tmp_xml);
-                // $i=$i+1;
+        $ns = $ini_xml['NS']['name_space'];
+        //var_dump($ns);
+        foreach ($ns as $val) {
+            //  echo "<br>".$val;
+            $tmp_xml = str_replace($val, "", $tmp_xml);
+            // $i=$i+1;
 
+        }
+
+        //    $tmp_xml = preg_replace("/<.*(xmlns *= *[\"'].[^\"']*[\"']).[^>]*>/i", "", $tmp_xml);
+
+        $tmp_file = fopen("_" . basename($file), "w");
+        fwrite($tmp_file, $tmp_xml);
+        $data = new SimpleXmlElement("_" . basename($file), null, true);
+        try {
+            if (strpos($tmp_xml, 'LineItem') == false) {
+
+                throw new Exception('Attenzione il documento non contiene righe valide!!');
+            }
+            $row = "";
+            $row = "TES";
+            $dt1 = strtotime($data->Order->IssueDate);
+            $dt = date("d/m/Y", $dt1);
+
+            $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
+                ->PartyTaxScheme->CompanyID;
+            $row = $row . $sep . $dt;
+            $row = $row . $sep . $data->Order->ID . $sep . $sep . $sep . $sep; //. PHP_EOL;
+            $row = $row . $sep . '"[CedentePrestatore|RiferimentoAmministrazione|' .
+            $data->Order->BuyerCustomerParty->Party->
+                EndpointID . "]" . $sep;
+            $row = $row . '[DatiOrdineAcquisto|Data|' . $dt . ']' . $sep;
+            $row = $row . '[DatiOrdineAcquisto|IdDocumento|' . $data->Order->ID;
+            $row = $row . ']"' . $sep . $sep;
+            $row = $row . str_replace("CIG:", "", $data->Order->OriginatorDocumentReference->ID) . $sep;
+            $row = $row . PHP_EOL;
+            //   echo '<tr><td>' . $row . '</tr></td>';
+            foreach ($data->Order->OrderLine as $line) {
+
+                $row = $row . "RIG" . $sep . $dt . $sep . $ind . $sep . $sep . $sep . $sep;
+                $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep . $sep;
+                $row = $row . $line->LineItem->Quantity;
+                $row = $row . $sep . $this->withoutRounding($line->LineItem->Price->PriceAmount, 3) . $sep . $sep;
+                $row = $row . $line->LineItem->Item->Name . ' ' . $line->Note . $sep;
+                $row = $row . $this->withoutRounding($line->LineItem->LineExtensionAmount, 3) . $sep . PHP_EOL;
             }
 
+            $di = str_replace('include', '', $directory->getPath());
+            $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
+            copy($xml, $di . $ini_array['percorsi']['procfiles'] . (basename($f)));
+            //     echo $row;
+            unlink($xml);
+            unlink("_" . basename($file));
+            return $row;
+        } catch (Exception $var) {
+            //  print $var->getMessage();
+            echo "<B>il File {$f}  potrebbe non essere CORRETTO!!!!</B><br>
+                <B>Non presenta al'interno i dati relativi a un ordine</B><br><BR>";
+        }
 
-
-            //    $tmp_xml = preg_replace("/<.*(xmlns *= *[\"'].[^\"']*[\"']).[^>]*>/i", "", $tmp_xml); 
-
-            $tmp_file = fopen("_" . basename($file), "w");
-            fwrite($tmp_file, $tmp_xml);
-            $data =  new SimpleXmlElement("_" . basename($file), null, true);
-            try {
-                if (strpos($tmp_xml, 'LineItem') == false) {
-
-                    throw new Exception('Attenzione il documento non contiene righe valide!!');
-                }
-                $row = "";
-                $row = "TES";
-                $dt1 =     strtotime($data->Order->IssueDate);
-                $dt = date("d/m/Y", $dt1);
-
-                $row = $row . $sep . $dt . $sep . $ind . $sep . $data->Order->BuyerCustomerParty->Party
-                    ->PartyTaxScheme->CompanyID;
-                $row = $row . $sep   . $dt;
-                $row = $row .   $sep . $data->Order->ID . $sep.$sep.$sep.$sep ;//. PHP_EOL;
-                $row = $row .$sep.'"[CedentePrestatore|RiferimentoAmministrazione|'.
-                $data->Order->BuyerCustomerParty->Party->
-                EndpointID."]".$sep;
-                $row = $row . '[DatiOrdineAcquisto|Data|'.$dt.']'.$sep;
-                $row = $row .'[DatiOrdineAcquisto|IdDocumento|'.   $data->Order->ID ; 
-                $row = $row .']"'.$sep.$sep;
-                $row = $row . str_replace("CIG:", "",$data->Order->OriginatorDocumentReference->ID).$sep; 
-                $row = $row . PHP_EOL;
-                //   echo '<tr><td>' . $row . '</tr></td>';
-                foreach ($data->Order->OrderLine as $line) {
-
-                    $row = $row . "RIG" . $sep   . $dt . $sep.$ind.$sep.$sep.$sep.$sep;
-                    $row = $row . $line->LineItem->Item->SellersItemIdentification->ID . $sep.$sep;
-                    $row = $row . $line->LineItem->Quantity;
-                    $row = $row . $sep . $this->withoutRounding($line->LineItem->Price->PriceAmount,3) .$sep.$sep;
-                    $row=$row.$line->LineItem->Item->Name.' '.$line->Note.$sep;
-                    $row=$row.$this->withoutRounding($line->LineItem->LineExtensionAmount,3) .$sep. PHP_EOL;
-                }
-
-
-
-                $di = str_replace('include', '', $directory->getPath());
-                $xml = $di . $ini_array['percorsi']['toelab'] . (basename($f));
-                copy($xml, $di . $ini_array['percorsi']['procfiles'] . (basename($f)));
-                //     echo $row;
-                unlink($xml);
-                unlink("_" . basename($file));
-                return $row;
-            } catch (Exception $var) {
-                //  print $var->getMessage();
-                echo "<B>il File {$f}  potrebbe non essere CORRETTO!!!!</B><br><B>Non presenta al'interno i dati relativi a un ordine</B><br><BR>";
-            }
-        
     }
 
-    function creafile($rows,$tipo=null)
+    public function creafile($rows, $tipo = null)
     {
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
-        $di=str_replace('include', '', __DIR__);
-     //  echo $di.'<br>';
-      //  echo $di.  $ini_array['Parametri']['NomeOut']  . '.csv';
-       if ($tipo==null) {
-           $nfile =$di . $ini_array['Parametri']['NomeOut']  . '.csv';
-       }elseif($tipo==2) {
-        $nfile =$di . $ini_array['Parametri']['NomeANA'] . '.csv';
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+        $di = str_replace('include', '', __DIR__);
+        //  echo $di.'<br>';
+        //  echo $di.  $ini_array['Parametri']['NomeOut']  . '.csv';
+        if ($tipo == null) {
+            $nfile = $di . $ini_array['Parametri']['NomeOut'] . '.csv';
+        } elseif ($tipo == 2) {
+            $nfile = $di . $ini_array['Parametri']['NomeANA'] . '.csv';
         }
         $tmpfile = fopen($nfile, "w")
-            or   $this->extremesave($rows);
+        or $this->extremesave($rows);
 
         fwrite($tmpfile, $rows);
         fclose($tmpfile);
 
-      if ($tipo==null) {
-          $webf = fopen($di.$ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv', "w") or
+        if ($tipo == null) {
+            $webf = fopen($di . $ini_array['Parametri']['NomeOut'] . date('m-d-Y_hia') . '.csv', "w") or
             $this->extremesave($rows);
-      
-          fwrite($webf, $rows);
-      }elseif($tipo==2){
-        //$webf = fopen($di.$ini_array['Parametri']['NomeANA']. '.csv', "w") or
-        //$this->extremesave($rows);
-  
-      //fwrite($webf, $rows);
 
+            fwrite($webf, $rows);
+        } elseif ($tipo == 2) {
+            //$webf = fopen($di.$ini_array['Parametri']['NomeANA']. '.csv', "w") or
+            //$this->extremesave($rows);
 
+            //fwrite($webf, $rows);
 
-      }
+        }
         if (strlen($rows) > 10) {
 
             return $nfile;
@@ -297,23 +277,22 @@ error_reporting(E_ALL);
             return "";
         }
     }
-    function extremesave($row)
+    public function extremesave($row)
     {
 
         fwrite("nso_" . date('m-d-Y_hia') . '.csv', $row);
         die("NON POSSO CREARE IL FILE DI OUTPUT  !! COntrollare cartella e permessi!! ");
     }
 
-    function reset($file)
+    public function reset($file)
     {
         unlink($file);
     }
 
-
-    function grid()
+    public function grid()
     {
 
-        $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
         $ext = $ini_array['Parametri']['estensione'];
         //$ini_array['percorsi']['procfiles'];
         $pfile = glob($ini_array['percorsi']['procfiles'] . $ext);
@@ -330,14 +309,14 @@ error_reporting(E_ALL);
 			</tr>
 		  </thead>
 		  <tbody>
- 
- <tr><td> 
+
+ <tr><td>
 EOT;
         foreach ($pfile as $pf) {
             $bspf = basename($pf);
             $html = $html . <<<EOT
-	<label for="name">Nome File</label><br /> 
-	<input ID="{$bspf}" type="checkbox" value="{$bspf}" /> {$bspf}<br /> 
+	<label for="name">Nome File</label><br />
+	<input ID="{$bspf}" type="checkbox" value="{$bspf}" /> {$bspf}<br />
 EOT;
         }
         $html = $html . <<<EOT
@@ -345,42 +324,41 @@ EOT;
 </div>
 </div>
 </div><br>
-<button type="submit" value="Submit" onclick="test()">Cancella</button> 
+<button type="submit" value="Submit" onclick="test()">Cancella</button>
 EOT;
         return $html;
     }
 
-
 // Works with positive and negative numbers, and integers and floats and strings
-function withoutRounding($number, $total_decimals) {
-    $number = (string)$number;
-    if($number === '') {
-        $number = '0';
-    }
-    if(strpos($number, '.') === false) {
-        $number .= '.';
-    }
-    $number_arr = explode('.', $number);
-
-    $decimals = substr($number_arr[1], 0, $total_decimals);
-    if($decimals === false) {
-        $decimals = '0';
-    }
-
-    $return = '';
-    if($total_decimals == 0) {
-        $return = $number_arr[0];
-    } else {
-        if(strlen($decimals) < $total_decimals) {
-            $decimals = str_pad($decimals, $total_decimals, '0', STR_PAD_RIGHT);
+    public function withoutRounding($number, $total_decimals)
+    {
+        $number = (string) $number;
+        if ($number === '') {
+            $number = '0';
         }
-        $return = $number_arr[0] . '.' . $decimals;
+        if (strpos($number, '.') === false) {
+            $number .= '.';
+        }
+        $number_arr = explode('.', $number);
+
+        $decimals = substr($number_arr[1], 0, $total_decimals);
+        if ($decimals === false) {
+            $decimals = '0';
+        }
+
+        $return = '';
+        if ($total_decimals == 0) {
+            $return = $number_arr[0];
+        } else {
+            if (strlen($decimals) < $total_decimals) {
+                $decimals = str_pad($decimals, $total_decimals, '0', STR_PAD_RIGHT);
+            }
+            $return = $number_arr[0] . '.' . $decimals;
+        }
+        return $return;
     }
-    return $return;
-}
 
 // How to use:
-
 
 }
 ?>

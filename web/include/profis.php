@@ -36,19 +36,19 @@ class profis
                 $line = ltrim(rtrim(fgets($file)));
 
                 $arr_row = explode(';', $line);
-                if (sizeof($arr_row)<>9) {
-              //      echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>'.
-               //     'I CAMPI PRESENTI SONO :'.sizeof($chk).'<br> E DOVREBBERO ESSERE 9'.'<br>';
-                   // fclose($file);
-                $line='';
-             
+                if (sizeof($arr_row) != 9) {
+                    //      echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>'.
+                    //     'I CAMPI PRESENTI SONO :'.sizeof($chk).'<br> E DOVREBBERO ESSERE 9'.'<br>';
+                    // fclose($file);
+                    $line = '';
+
                 }
                 // var_dump($myArray);
                 if (!strpos($line, 'Partita iva') && strlen($line) != 0) {
-                   
-                        $row = $row . '"AGE"' . $sep . '"' . $arr_row[6] . '"'
-                            . $sep . '"' . $arr_row[7] . '"' . $sep . '"' . $arr_row[0] . '"' . $sep . PHP_EOL;
-              
+
+                    $row = $row . '"AGE"' . $sep . '"' . $arr_row[6] . '"'
+                        . $sep . '"' . $arr_row[7] . '"' . $sep . '"' . $arr_row[0] . '"' . $sep . PHP_EOL;
+
                 }
 
             }
@@ -62,7 +62,7 @@ class profis
 
     public function creaditta_File($file, $id = null, $ateco)
     {
-        
+
         $ind = $id;
         $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
 //$ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
@@ -76,9 +76,9 @@ class profis
         $file_ = $di . $ini_array['percorsi']['toelab'] . (basename($f));
 //file2 = file_get_contents($file_);
         $row = '';
-        $err1=0;
+        $err1 = 0;
         if ($file = fopen($file_, "r")) {
-            $ind=0;
+            $ind = 0;
             while (!feof($file)) {
                 $line = ltrim(rtrim(fgets($file)));
                 //  echo $line;
@@ -87,40 +87,35 @@ class profis
                 # do same stuff with the $line
                 $line2 = $line;
 
-         
-                $chk=explode(';', $line);
-                if (sizeof($chk)<>9) {
-                    echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>'.
-                    'I CAMPI PRESENTI SONO :'.sizeof($chk).'<br> E DOVREBBERO ESSERE 9'.'<br>';
-                   // fclose($file);
-                $line='';
-             
+                $chk = explode(';', $line);
+                if (sizeof($chk) != 9) {
+                    echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>' .
+                    'I CAMPI PRESENTI SONO :' . sizeof($chk) . '<br> E DOVREBBERO ESSERE 9' . '<br>';
+                    // fclose($file);
+                    $line = '';
+
                 }
 
-                if ($ind==0
-                && strtoupper($line)<>
-                'CODICE;RAGIONE SOCIALE;TIPO SOGGETTO;DITTA  AA7;ANNOTAZIONI;TITOLARE P.IVA;PARTITA IVA;CODICE FISCALE;INDIRIZZI'
-                ){
-                    echo 'ATTENZIONE I NOMI DI COLONNA SONO ERRATI!!!!<br>'.
-                   
-                   // fclose($file);
-                 $err1=1;
+                if ($ind == 0
+                    && strtoupper($line) !=
+                    'CODICE;RAGIONE SOCIALE;TIPO SOGGETTO;DITTA  AA7;ANNOTAZIONI;TITOLARE P.IVA;PARTITA IVA;CODICE FISCALE;INDIRIZZI'
+                ) {
+                    echo 'ATTENZIONE I NOMI DI COLONNA SONO ERRATI!!!!<br>' .
 
-                    }
+                    // fclose($file);
+                    $err1 = 1;
 
+                }
 
+                if (!strpos($line, 'Partita iva') && strlen($line) != 0 && $err1 == 0) {
+                    $fc = $this->build_d0($ateco, $line);
+                    $fc = $fc . $this->build_d1($line, $ateco);
+                    $fc = $fc . $this->build_d2($line, $ateco);
+                    $fc = $fc . $this->build_d3($line, $ateco);
+                    $row = $row . $fc;
+                }
 
-
-
-                    if (!strpos($line, 'Partita iva') && strlen($line) != 0 && $err1==0) {
-                        $fc = $this->build_d0($ateco, $line);
-                        $fc = $fc . $this->build_d1($line, $ateco);
-                        $fc = $fc . $this->build_d2($line, $ateco);
-                        $fc = $fc . $this->build_d3($line, $ateco);
-                        $row = $row . $fc;
-                    }
-                
-                $ind=$ind+1;
+                $ind = $ind + 1;
             }
             fclose($file);
         }
@@ -178,7 +173,7 @@ class profis
         $ris = $ris . str_pad($line2[7], 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //date('Y-m-d H:i:s') ;//ese
         $ris = $ris . '0101' . date('Y'); //datai
-        $ris = $ris.str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
+        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
         $ris = $ris . '   '; //cvalu
         $ris = $ris . '00'; //GestContEntiTerSet
         $ris = $ris . str_pad(' ', 528); //blk
@@ -202,7 +197,7 @@ class profis
         $ris = $ris . str_pad(' ', 5); //cate
         $ris = $ris . str_pad(' ', 50); //atdes
         $ris = $ris . '0101' . date('Y'); //datai
-        $ris = $ris.str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
+        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
         $ris = $ris . '0'; //attsr
         $ris = $ris . '1'; //ambc
         $ris = $ris . '1'; //rec
@@ -369,27 +364,24 @@ class profis
         return $t;
     }
 
+    public function zipper()
+    {
+        $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
+        $uno = $ini_array['Parametri']['NomeOut'] . '.csv';
+        $due = $ini_array['Parametri']['NomeANA'] . '.csv';
 
-public function zipper() {
-    $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
-  $uno=  $ini_array['Parametri']['NomeOut'].'.csv';
-  $due=  $ini_array['Parametri']['NomeANA'].'.csv';
-  
-  $files = array($uno, $due );
-    $zipname = $ini_array['Parametri']['ZipFile'].'.zip';
-    $zip = new ZipArchive;
-    $zip->open($zipname, ZipArchive::CREATE);
-    foreach ($files as $file) {
-      $zip->addFile($file);
+        $files = array($uno, $due);
+        $zipname = $ini_array['Parametri']['ZipFile'] . '.zip';
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        foreach ($files as $file) {
+            $zip->addFile($file);
+        }
+        $zip->close();
+        $di = str_replace('include', '', __DIR__);
+        return $di . $ini_array['Parametri']['ZipFile'] . '.zip';
+
     }
-    $zip->close();
-    $di=str_replace('include', '', __DIR__);
-return $di .$ini_array['Parametri']['ZipFile'].'.zip';
-
-
-}
-
-
 
 }
 

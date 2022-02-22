@@ -2,33 +2,30 @@
 //ini_set('display_errors', '1');
 //ini_set('display_startup_errors', '1');
 //error_reporting(E_ALL);
-include(__DIR__.'/include/ls.php');
-include(__DIR__.'/include/PB.php');
-include(__DIR__.'/include/profis.php');
- 
-$pfs=new profis();
+include __DIR__ . '/include/ls.php';
+include __DIR__ . '/include/PB.php';
+include __DIR__ . '/include/profis.php';
+
+$pfs = new profis();
 error_reporting(E_ALL);
 
-$ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
+$ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
 $ls = new ls();
 $ls->localelab();
 $content = "";
 $p = new ProgressBar();
-if (!empty($_POST)){
-   strlen($_POST['state'])==0 ? die("non è stato selezioanto il codice ATECO") : 1;
-  
-  //echo '<BR>';
-  //echo '<BR>';
-  //echo '<BR>';
-  //echo ($_POST['state']);
-  }
-  else{
-      echo 'qualquadra non cosa!!!';
+if (!empty($_POST)) {
+    strlen($_POST['state']) == 0 ? die("non è stato selezioanto il codice ATECO") : 1;
 
+    //echo '<BR>';
+    //echo '<BR>';
+    //echo '<BR>';
+    //echo ($_POST['state']);
+} else {
+    echo 'qualquadra non cosa!!!';
 
+}
 
-  }
-  
 $eleb = ($ls->elefile(1));
 $eleb2 = ($ls->elefile(2));
 //var_dump($eleb);
@@ -176,7 +173,7 @@ body {
 
 
 
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+<table style="height: 94px; margin-left: auto; margin-right: auto;"
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody>
 <tr style="height: 116.188px;">
@@ -202,31 +199,31 @@ echo <<<EOT
 			</tr>
 		  </thead>
 		  <tbody>
-<tr><td> 
+<tr><td>
 EOT;
 $contaid = 1;
 $riga = "";
 foreach ($elef as $t) {
-  if (count($elef) == 1) {
-    $i = 100;
-  }
-  //echo   basename($t) . '<br></td></tr><tr><td>';
+    if (count($elef) == 1) {
+        $i = 100;
+    }
+    //echo   basename($t) . '<br></td></tr><tr><td>';
 
-  /*
-rimosso che non si riesce a trovare un xsd valido per sto nso....
-$ls->valfile(basename($t));
-*/
-  $riga = $riga . $pfs-> creaditta_File(basename($t), $contaid,$_POST['state']);
-  //	echo basename($t).'<br>'.round($i,2).'%<br>';
-  $p->setProgressBarProgress($i * 100 / $size);
-  usleep(1000000 * 0.1);
-  $i = $i + $conta;
-  $contaid = $contaid + 1;
+    /*
+    rimosso che non si riesce a trovare un xsd valido per sto nso....
+    $ls->valfile(basename($t));
+     */
+    $riga = $riga . $pfs->creaditta_File(basename($t), $contaid, $_POST['state']);
+    //    echo basename($t).'<br>'.round($i,2).'%<br>';
+    $p->setProgressBarProgress($i * 100 / $size);
+    usleep(1000000 * 0.1);
+    $i = $i + $conta;
+    $contaid = $contaid + 1;
 }
 $p->setProgressBarProgress(100);
 
 echo
-<<<EOT
+    <<<EOT
 
 
 </td></TR></tbody></table>
@@ -234,7 +231,7 @@ echo
 </div>
 </div>
 
-<table style="height: 94px; margin-left: auto; margin-right: auto;" 
+<table style="height: 94px; margin-left: auto; margin-right: auto;"
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="./index.php">Terminato</a></h1><br/>
@@ -243,47 +240,45 @@ EOT;
 
 //echo $riga;
 
-
 $f = $ls->creafile($riga);
-$html='';
- 
+$html = '';
+
 if (strlen($f) > 3) {
 
-  $t = basename($f);
-$zzz=$t;
-  if ($ini_array['Parametri']['wbout'] == 1) {
-    $html= <<<EOT
-<td><tr><table style="height: 54px; margin-left: auto; margin-right: auto;" 
+    $t = basename($f);
+    $zzz = $t;
+    if ($ini_array['Parametri']['wbout'] == 1) {
+        $html = <<<EOT
+<td><tr><table style="height: 54px; margin-left: auto; margin-right: auto;"
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="{$t}">Scarica File Ditte</a></h1><br/>
 </td></tbody></table></tr>
 EOT;
-  } else {
+    } else {
 
-    $html= <<<EOT
-    <td><tr> <table style="height: 54px; margin-left: auto; margin-right: auto;" 
+        $html = <<<EOT
+    <td><tr> <table style="height: 54px; margin-left: auto; margin-right: auto;"
     border="1" width="311" cellspacing="10" cellpadding="10">
     <tbody><TD><BR><H1>File Elaborato e disponibile in:<br> {$ini_array['percorsi']['output']}
     </td></tbody></table></tr>
     EOT;
-  }
+    }
 }
 
-
-$riga='';
+$riga = '';
 $contaid = 1;
 foreach ($elef as $t) {
-  $riga = $riga . $pfs-> create_Ana(basename($t), $contaid,$_POST['state']);
-  $contaid =$contaid + 1;
+    $riga = $riga . $pfs->create_Ana(basename($t), $contaid, $_POST['state']);
+    $contaid = $contaid + 1;
 }
 
 //echo ($riga);
 
-$f = $ls->creafile($riga,2);
+$f = $ls->creafile($riga, 2);
 $v = basename($f);
-$html=$html. <<<EOT
-<tr><table style="height: 54px; margin-left: auto; margin-right: auto;" 
+$html = $html . <<<EOT
+<tr><table style="height: 54px; margin-left: auto; margin-right: auto;"
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="{$v}">Scarica File ANAGRAFICHE </a></h1><br/>
@@ -299,39 +294,35 @@ EOT;
 //$ls= new ls();
 //$ls->localelab();
 $directory = new DirectoryIterator(dirname(__FILE__));
-$di =str_replace('include','',$directory->getPath());
-$di=str_replace(__DIR__,'include','');
+$di = str_replace('include', '', $directory->getPath());
+$di = str_replace(__DIR__, 'include', '');
 //var_dump($ini_array);
-$lpath = glob(__DIR__.''.$ini_array['percorsi']['toelab'].'*');
+$lpath = glob(__DIR__ . '' . $ini_array['percorsi']['toelab'] . '*');
 
 //echo $di.$ini_array['percorsi']['procfiles'];
 //var_dump(__DIR__.''.$ini_array['percorsi']['toelab'].'*');
-    foreach ($lpath as $f) {
-  // echo  "rimosso file {$f}<br>";
-$ls->reset($f);
-    }
- //   echo $di.$ini_array['percorsi']['procfiles'];
-    $lpath = glob($di.''.$ini_array['percorsi']['procfiles'].'*');
-  //  var_dump($lpath);
-    foreach ($lpath as $f) {
+foreach ($lpath as $f) {
+    // echo  "rimosso file {$f}<br>";
+    $ls->reset($f);
+}
+//   echo $di.$ini_array['percorsi']['procfiles'];
+$lpath = glob($di . '' . $ini_array['percorsi']['procfiles'] . '*');
+//  var_dump($lpath);
+foreach ($lpath as $f) {
 //   echo  "rimosso file {$f}<br>";
-$ls->reset($f);
-    }
+    $ls->reset($f);
+}
 
-
-   $z= $pfs->zipper();
-$z=basename($z);
-$t=isset($zzz)? $zzz:'';
+$z = $pfs->zipper();
+$z = basename($z);
+$t = isset($zzz) ? $zzz : '';
 echo <<<EOT
 <br><br>
- 
-<table style="height: 54px; margin-left: auto; margin-right: auto;" 
+
+<table style="height: 54px; margin-left: auto; margin-right: auto;"
 border="1" width="311" cellspacing="10" cellpadding="10">
 <tbody><TD><BR><H1>
 <a href="{$z}">Scarica File Ditte e Anagrafiche(ZIP)</a></h1><br/>
 </td></tbody></table>
 
 EOT;
-  
-
-?>
