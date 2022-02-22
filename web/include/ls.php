@@ -36,7 +36,7 @@ error_reporting(E_ALL);
         ) {
 
             mkdir('/app/web/toelab/' , 0777);
-            echo $this->folder_exist('/app/web/toelab/');
+           // echo $this->folder_exist('/app/web/toelab/');
             if (!is_dir('/app/web/toelab/')){
                 
             echo "<H1>attenzione la directory di origine  non esiste controllare il config.ini voce oripath</h1>";
