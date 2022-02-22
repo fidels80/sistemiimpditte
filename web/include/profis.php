@@ -88,12 +88,12 @@ class profis
                 $line2 = $line;
 
                 $chk = explode(';', $line);
-                if (sizeof($chk) != 9) {
+                if (sizeof($chk) != 9 && strlen($line) != 0) {
                     echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>' .
                     'I CAMPI PRESENTI SONO :' . sizeof($chk) . '<br> E DOVREBBERO ESSERE 9' . '<br>';
                     // fclose($file);
                     $line = '';
-
+                    $err1 = 1;
                 }
 
                 if ($ind == 0
