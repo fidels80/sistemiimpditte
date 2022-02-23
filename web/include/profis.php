@@ -121,7 +121,7 @@ class profis
         }
 
         echo $f //$basename($file_)
-         . '<br></td></tr><tr><td>';
+         . '</td></tr><tr><td>';
         return $row;
     }
 
@@ -148,8 +148,8 @@ class profis
         isset($line) ? $line : die('la linea del file è vuota!!!');
         $ris = 'D0' . '0'; //proc +id
         $ris = $ris . "  " . str_pad($line2[0], 6, ' '); //gruppo archivi profis + cod ditta
-        $ris = $ris . str_pad($line2[6], 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad($line2[7], 16, ' ', STR_PAD_LEFT);
+        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //cei,rcf,cls,css,gpar,sc3
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //csp3,crt3,psg3,psp3,anric3
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //adg3,bil3,ftp3,cbl3,edf3
@@ -169,13 +169,13 @@ class profis
 
         $ris = 'D1';
         $ris = $ris . str_pad($line2[0], 6, ' '); //codice ditat profis
-        $ris = $ris . str_pad($line2[6], 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad($line2[7], 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //date('Y-m-d H:i:s') ;//ese
         $ris = $ris . '0101' . date('Y'); //datai
         $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
         $ris = $ris . '   '; //cvalu
-        $ris = $ris . '00'; //GestContEntiTerSet
+        $ris = $ris . ' 0'; //GestContEntiTerSet numero 2
         $ris = $ris . str_pad(' ', 528); //blk
         $ris = $ris . '2021.7  ' . 'A' . PHP_EOL;
         echo '<tr><td>'.$ris . '</td></tr>';
@@ -189,11 +189,11 @@ class profis
         //  print_R($line2);
         $ris = 'D2';
         $ris = $ris . str_pad($line2[0], 6, ' '); //codice ditat profis
-        $ris = $ris . str_pad($line2[6], 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad($line2[7], 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //ese
-        $ris = $ris . '00'; //atc
-        $ris = $ris . str_pad($ateco, 6, '0'); //cate07
+        $ris = $ris . ' 0'; //atc numero 2
+        $ris = $ris . str_pad($ateco, 6, ' '); //cate07
         $ris = $ris . str_pad(' ', 5); //cate
         $ris = $ris . str_pad(' ', 50); //atdes
         $ris = $ris . '0101' . date('Y'); //datai
@@ -205,8 +205,8 @@ class profis
         $ris = $ris . '0'; //rcm
         $ris = $ris . str_pad(' ', 6); //cpc
         $ris = $ris . '0'; //ssp
-        $ris = $ris . str_pad('0', 6, '0', STR_PAD_LEFT); //ppim
-        $ris = $ris . str_pad('0', 6, '0', STR_PAD_LEFT); //prit
+        $ris = $ris . str_pad('0', 6, ' ', STR_PAD_LEFT); //ppim
+        $ris = $ris . str_pad('0', 6, ' ', STR_PAD_LEFT); //prit
         $ris = $ris . '0'; //tnpn
         $ris = $ris . '0'; //gio
         $ris = $ris . '0'; //rpro
@@ -245,39 +245,39 @@ class profis
 
         $ris = 'D3';
         $ris = $ris . str_pad($line2[0], 6, ' ');
-        $ris = $ris . str_pad($line2[6], 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad($line2[7], 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //aiv
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //ati
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //ati
         $ris = $ris . str_pad($ateco, 6, '0'); //cate07
         $ris = $ris . str_pad(' ', 5, ' ', STR_PAD_LEFT); //cate
         $ris = $ris . str_pad(' ', 50, ' ', STR_PAD_LEFT); //atdes
         $ris = $ris . '0101' . date('Y'); //ATDINI
         $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //ATDFIN
         $ris = $ris . '0'; //attsr
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //riv
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //tper
-        $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //cit
-        $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //pro
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //riv
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //tper
+        $ris = $ris . str_pad('0', 1, ' ', STR_PAD_LEFT); //cit
+        $ris = $ris . str_pad('0', 1, ' ', STR_PAD_LEFT); //pro
         $ris = $ris . str_pad(' ', 6, ' ', STR_PAD_LEFT); //prod
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //a36
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //a1t
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //a1p
         $ris = $ris . str_pad(' ', 6, ' ', STR_PAD_LEFT); //pFOR
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //cris
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //cris
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //impi
         $ris = $ris . str_pad(' ', 1, ' ', STR_PAD_LEFT); //butr
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //bute
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //bugab
-        $ris = $ris . str_pad('0', 6, '0', STR_PAD_LEFT); //cpml
+        $ris = $ris . str_pad('0', 6, ' ', STR_PAD_LEFT); //pml
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //riac
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //edrr
-        $ris = $ris . str_pad('0', 3, '0', STR_PAD_LEFT); //nracq
-        $ris = $ris . str_pad('0', 3, '0', STR_PAD_LEFT); //nrvem
-        $ris = $ris . str_pad('0', 3, '0', STR_PAD_LEFT); //nrcor
-        $ris = $ris . str_pad('0', 17, '0', STR_PAD_LEFT); //capr
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //cappr
-        $ris = $ris . str_pad('0', 17, '0', STR_PAD_LEFT); //ccpr
+        $ris = $ris . str_pad('0', 3, ' ', STR_PAD_LEFT); //nracq
+        $ris = $ris . str_pad('0', 3, ' ', STR_PAD_LEFT); //nrvem
+        $ris = $ris . str_pad('0', 3, ' ', STR_PAD_LEFT); //nrcor
+        $ris = $ris . str_pad('0', 17, ' ', STR_PAD_LEFT); //capr
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //cappr
+        $ris = $ris . str_pad('0', 17, ' ', STR_PAD_LEFT); //ccpr
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //ecai
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //edia
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //eliq
@@ -293,10 +293,10 @@ class profis
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //slivc32b
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //dciva
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //cdps
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //soggint
+        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //soggint
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //cdsf
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //cdan
-        $ris = $ris . str_pad('0', 2, '0', STR_PAD_LEFT); //soggintan
+        $ris = $ris . str_pad('1', 2, ' ', STR_PAD_LEFT); //soggintan
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //comdatispesescuole
         $ris = $ris . str_pad(' ', 360); //blk
         $ris = $ris . '2021.7  ' . 'A' . PHP_EOL;
