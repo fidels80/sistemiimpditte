@@ -86,9 +86,14 @@ class profis
                 // echo '<br><br>';
                 # do same stuff with the $line
                 $line2 = $line;
+if ($ind==0) {
+   // echo $line.'<br>';
+    $line=str_replace(array("\r", "\n"), '', $line);
+   // echo $line.'<br>';
+}
 
                 $chk = explode(';', $line);
-                if (sizeof($chk) != 9 && strlen($line) != 0) {
+                if (sizeof($chk) != 9 && strlen($line) != 0 && $ind >=3) {
                     echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>' .
                     'I CAMPI PRESENTI SONO :' . sizeof($chk) . '<br> E DOVREBBERO ESSERE 9' . '<br>';
                     // fclose($file);
@@ -96,9 +101,9 @@ class profis
                     $err1 = 1;
                 }
 
-                if ($ind == 0
+                if ($ind == 0 && 1==2
                     && strtoupper($line) !=
-                    'CODICE;RAGIONE SOCIALE;TIPO SOGGETTO;DITTA  AA7;ANNOTAZIONI;TITOLARE P.IVA;PARTITA IVA;CODICE FISCALE;INDIRIZZI'
+                    'CODICE;RAGIONE SOCIALE;TIPO SOGGETTO;"Ditta AA7";ANNOTAZIONI;TITOLARE P.IVA;PARTITA IVA;CODICE FISCALE;INDIRIZZI'
                 ) {
                     echo 'ATTENZIONE I NOMI DI COLONNA SONO ERRATI!!!!<br>' .
 
@@ -107,7 +112,7 @@ class profis
 
                 }
 
-                if (!strpos($line, 'Partita iva') && strlen($line) != 0 && $err1 == 0) {
+                if (!strpos($line, 'Partita iva') && strlen($line) != 0 && $err1 == 0 && $ind>=3) {
                     $fc = $this->build_d0($ateco, $line);
                     $fc = $fc . $this->build_d1($line, $ateco);
                     $fc = $fc . $this->build_d2($line, $ateco);
@@ -148,8 +153,8 @@ class profis
         isset($line) ? $line : die('la linea del file è vuota!!!');
         $ris = 'D0' . '0'; //proc +id
         $ris = $ris . "  " . str_pad($line2[0], 6, ' '); //gruppo archivi profis + cod ditta
-        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])>=3 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])>=3  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //cei,rcf,cls,css,gpar,sc3
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //csp3,crt3,psg3,psp3,anric3
         $ris = $ris . '0' . '0' . '0' . '0' . '0' . '0'; //adg3,bil3,ftp3,cbl3,edf3
@@ -169,8 +174,8 @@ class profis
 
         $ris = 'D1';
         $ris = $ris . str_pad($line2[0], 6, ' '); //codice ditat profis
-        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])>=3 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])>=3  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //date('Y-m-d H:i:s') ;//ese
         $ris = $ris . '0101' . date('Y'); //datai
         $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
@@ -189,8 +194,8 @@ class profis
         //  print_R($line2);
         $ris = 'D2';
         $ris = $ris . str_pad($line2[0], 6, ' '); //codice ditat profis
-        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])>=3 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])>=3  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //ese
         $ris = $ris . ' 0'; //atc numero 2
         $ris = $ris . str_pad($ateco, 6, ' '); //cate07
@@ -242,11 +247,10 @@ class profis
     {
         // $t=file_get_contents($file);
         $line2 = explode(';', $line);
-
         $ris = 'D3';
         $ris = $ris . str_pad($line2[0], 6, ' ');
-        $ris = $ris . str_pad((strlen($line2[0])==6 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
-        $ris = $ris . str_pad((strlen($line2[0])==6  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
+        $ris = $ris . str_pad((strlen($line2[0])>=3 ? ' ':$line2[6]), 12, ' ', STR_PAD_LEFT); //partitaiva
+        $ris = $ris . str_pad((strlen($line2[0])>=3  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //aiv
         $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //ati
         $ris = $ris . str_pad($ateco, 6, '0'); //cate07
