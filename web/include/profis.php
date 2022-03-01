@@ -180,7 +180,9 @@ if ($ind==0) {
         $ris = $ris . str_pad((strlen($line2[0])>=3  ? ' ':$line2[7]), 16, ' ', STR_PAD_LEFT); //codice fiscale
         $ris = $ris . date('Y'); //date('Y-m-d H:i:s') ;//ese
         $ris = $ris . '0101' . date('Y'); //datai
-        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
+        //$ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT);
+        ////
+        $ris = $ris .'3112'.date('Y'); //dataf
         $ris = $ris . '   '; //cvalu
         $ris = $ris . ' 0'; //GestContEntiTerSet numero 2
         $ris = $ris . str_pad(' ', 528); //blk
@@ -203,11 +205,14 @@ if ($ind==0) {
         $ris = $ris . str_pad($ateco, 6, ' '); //cate07
         $ris = $ris . str_pad(' ', 5); //cate
         $ris = $ris . str_pad(' ', 50); //atdes
-        $ris = $ris . '0101' . date('Y'); //datai
-        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //dataf
+        // $ris = $ris . '0101' . date('Y'); //datai
+        //$ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //
+        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT);//datai
+        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT);//dataf
+        //$ris = $ris .'3112'.date('Y'); //dataf
         $ris = $ris . '0'; //attsr
         $ris = $ris . '1'; //ambc
-        $ris = $ris . '1'; //rec
+        $ris = $ris . '2'; //rec
         $ris = $ris . '0'; //drcdip
         $ris = $ris . '0'; //rcm
         $ris = $ris . str_pad(' ', 6); //cpc
@@ -259,7 +264,8 @@ if ($ind==0) {
         $ris = $ris . str_pad(' ', 5, ' ', STR_PAD_LEFT); //cate
         $ris = $ris . str_pad(' ', 50, ' ', STR_PAD_LEFT); //atdes
         $ris = $ris . '0101' . date('Y'); //ATDINI
-        $ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //ATDFIN
+        //$ris = $ris . str_pad(' ', 8, ' ', STR_PAD_LEFT); //.'3112'.date('Y'); //ATDFIN
+        $ris = $ris .'3112'.date('Y'); //ATDFIN
         $ris = $ris . '0'; //attsr
         $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //riv
         $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //tper
@@ -312,7 +318,7 @@ if ($ind==0) {
         $ris = $ris .'D4'.$cd_profis.'                            '.date('Y').'01479110     A001Acquisti                                          0000000                                                               1000000                                                                                                                                            000   00010    2V0010         0000 0000         00 0000         0 0000          0000         0 0000         00 0000         0 0000         0000 0000          000                                  0                                                                     2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
         $ris = $ris .'D4'.$cd_profis.'                            '.date('Y').'01479110     V001Vendite                                           0000000                                                               1002000                                                                                                                                            000   00010    2 0000         0000 0000         00 0000         0 0000          0000         0 0000         00 0000         0 0000         0000 0000          000                                  0                                                                     2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
         $ris = $ris .'D4'.$cd_profis.'                            '.date('Y').'01479110     C001Corrispettivi                                     0000000                                                               1002000                                                                                                                                            000   00010    0 0000         0000 0000         00 0000         0 0000          0000         0 0000         00 0000         0 0000         0000 0000          000                                  0                                                                     2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
-        $ris = $ris .'D8'.$cd_profis.'                            '.date('Y').'1          0000101202201331122022300000013489331002                 0          00001012022012311220222000000                            0000000                                                                                                                                                                                                                                                                                                                                                                                                                      2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
+        $ris = $ris .'D8'.$cd_profis.'                            '.date('Y').'1          00001012022013311220223      13489331002                 0          00001012022012311220222000000                            0000000                                                                                                                                                                                                                                                                                                                                                                                                                      2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
         $ris = $ris .'DP'.$cd_profis.'                            '.date('Y').'01479110     1222100                                                            0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
         $ris = $ris .'DE'.$cd_profis.'                            '.date('Y').'01479110     00000USCRF00000  0000        00                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );
         $ris = $ris .'DR'.$cd_profis.'                            '.date('Y').'00000000100110000000000000000 000000000000000000000000010000000000000                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2021.7  A'. ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :"\r".PHP_EOL );

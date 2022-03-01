@@ -10,7 +10,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-
+//47.91.10 atedcodefault
 
 
 $ini_array = parse_ini_file("config.ini", true /* will scope sectionally */);
@@ -296,6 +296,7 @@ $rr = "accept='.{$ext}";
   IMMETTI CODICE ATECO
 <select id='ateco' class="js-example-data-array-selected" style="width: 300px"  name="state">
 <option></option>
+<option id="47.91.10" selected="selected">47.91.10</option>
 </label>  
 <input name="submit" type="submit" value="Elaborazione Dati"
 />
