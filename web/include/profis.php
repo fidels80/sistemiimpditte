@@ -305,7 +305,7 @@ if ($ind==0) {
         $ris = $ris . str_pad('1', 2, ' ', STR_PAD_LEFT); //soggintan
         $ris = $ris . str_pad('0', 1, '0', STR_PAD_LEFT); //comdatispesescuole
         $ris = $ris . str_pad(' ', 360); //blk
-        $ris = $ris . '2021.7  ' . 'A' . ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :'\r'.php_EOL );
+        $ris = $ris . '2021.7  ' . 'A' . ( DIRECTORY_SEPARATOR === '\\' ?  PHP_EOL :'\r'.PHP_EOL );
         echo '<tr><td>'.$ris . '</td></tr>';
 
         $cd_profis=str_pad($line2[0], 6, ' ');           
