@@ -41,7 +41,7 @@ $ls->reset($f);
    }
   echo 
   <<<EOT
-  <a href="./index.php">Terminato</a></h1><br/>
+  <h1><a href="./index.php">Terminato torna indietro</a></h1><br/>
 EOT;
 ?>
  

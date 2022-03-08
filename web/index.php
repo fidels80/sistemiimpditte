@@ -315,8 +315,11 @@ $rr = "accept='.{$ext}";
 <input name="submit" type="submit" value="Elaborazione Dati"/>
 </form></td>
 </tr>
+
 </tbody>
 </table>
+<tr><h1><a href="./reset.php">Pulisci Memoria</a></h1></tr>
+ 
 <p><br /><br /></p>
 </body>
 </html>
