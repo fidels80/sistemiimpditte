@@ -39,7 +39,9 @@ foreach ($web as $f) {
   echo  "rimosso file {$f}<br>";
 $ls->reset($f);
    }
-
-
+  echo 
+  <<<EOT
+  <a href="./index.php">Terminato</a></h1><br/>
+EOT;
 ?>
  
