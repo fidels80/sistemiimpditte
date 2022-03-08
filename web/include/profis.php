@@ -60,7 +60,7 @@ class profis
 
     }
 
-    public function creaditta_File($file, $id = null, $ateco)
+    public function creaditta_File($file, $id = null, $ateco,$tper)
     {
 
         $ind = $id;
@@ -116,7 +116,7 @@ if ($ind==0) {
                     $fc = $this->build_d0($ateco, $line);
                     $fc = $fc . $this->build_d1($line, $ateco);
                     $fc = $fc . $this->build_d2($line, $ateco);
-                    $fc = $fc . $this->build_d3($line, $ateco);
+                    $fc = $fc . $this->build_d3($line, $ateco,$tper);
 
         
                     $row = $row . $fc;
@@ -250,7 +250,7 @@ if ($ind==0) {
         echo '<tr><td>'.$ris . '</td></tr>';
         return $ris;
     }
-    public function build_d3($line, $ateco)
+    public function build_d3($line, $ateco,$tper)
     {
         // $t=file_get_contents($file);
         $line2 = explode(';', $line);
@@ -268,7 +268,7 @@ if ($ind==0) {
         $ris = $ris .'3112'.date('Y'); //ATDFIN
         $ris = $ris . '0'; //attsr
         $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //riv
-        $ris = $ris . str_pad('0', 2, ' ', STR_PAD_LEFT); //tper
+        $ris = $ris . str_pad($tper, 2, ' ', STR_PAD_LEFT); //tper
         $ris = $ris . str_pad('0', 1, ' ', STR_PAD_LEFT); //cit
         $ris = $ris . str_pad('0', 1, ' ', STR_PAD_LEFT); //pro
         $ris = $ris . str_pad(' ', 6, ' ', STR_PAD_LEFT); //prod

@@ -297,9 +297,22 @@ $rr = "accept='.{$ext}";
 <select id='ateco' class="js-example-data-array-selected" style="width: 300px"  name="state">
 <option></option>
 <option id="47.91.10" selected="selected">47.91.10</option>
-</label>  
-<input name="submit" type="submit" value="Elaborazione Dati"
-/>
+
+</select>
+
+</label> 
+<br><br>TPER<br>
+<label for="id_label_single2">
+
+<select id='tper'   style="width: 300px"  name="tper">
+<option></option>
+<option>1</option>
+<option>3</option>
+<option selected="selected" >3</option>
+ 
+</select>
+</label><br><br>
+<input name="submit" type="submit" value="Elaborazione Dati"/>
 </form></td>
 </tr>
 </tbody>

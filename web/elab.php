@@ -16,7 +16,7 @@ $content = "";
 $p = new ProgressBar();
 if (!empty($_POST)) {
     strlen($_POST['state']) == 0 ? die("non è stato selezioanto il codice ATECO") : 1;
-
+   // echo $_POST['tper'];
     //echo '<BR>';
     //echo '<BR>';
     //echo '<BR>';
@@ -213,7 +213,7 @@ foreach ($elef as $t) {
     rimosso che non si riesce a trovare un xsd valido per sto nso....
     $ls->valfile(basename($t));
      */
-    $riga = $riga . $pfs->creaditta_File(basename($t), $contaid, $_POST['state']);
+    $riga = $riga . $pfs->creaditta_File(basename($t), $contaid, $_POST['state'],$_POST['tper']);
     //    echo basename($t).'<br>'.round($i,2).'%<br>';
     $p->setProgressBarProgress($i * 100 / $size);
     usleep(1000000 * 0.1);
@@ -269,7 +269,7 @@ EOT;
 $riga = '';
 $contaid = 1;
 foreach ($elef as $t) {
-    $riga = $riga . $pfs->create_Ana(basename($t), $contaid, $_POST['state']);
+    $riga = $riga . $pfs->create_Ana(basename($t), $contaid, $_POST['state'],);
     $contaid = $contaid + 1;
 }
 
