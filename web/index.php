@@ -307,8 +307,8 @@ $rr = "accept='.{$ext}";
 <select id='tper'   style="width: 300px"  name="tper">
 <option></option>
 <option value=1>Mensile</option>
-<option value=3>Trimestrale</option>
-<option selected="selected" value=3  >Trimestrale</option>
+<option selected="selected"  value=3>Trimestrale</option>
+ 
  
 </select>
 </label><br><br>
