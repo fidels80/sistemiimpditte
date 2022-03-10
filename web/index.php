@@ -301,14 +301,14 @@ $rr = "accept='.{$ext}";
 </select>
 
 </label> 
-<br><br>TPER<br>
+<br><br>Periodicità IVA<br>
 <label for="id_label_single2">
 
 <select id='tper'   style="width: 300px"  name="tper">
 <option></option>
-<option>1</option>
-<option>3</option>
-<option selected="selected" >3</option>
+<option value=1>Mensile</option>
+<option value=3>Trimestrale</option>
+<option selected="selected" value=3  >Trimestrale</option>
  
 </select>
 </label><br><br>
