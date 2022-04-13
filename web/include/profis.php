@@ -63,6 +63,8 @@ class profis
     public function creaditta_File($file, $id = null, $ateco,$tper)
     {
 
+       
+       
         $ind = $id;
         $ini_array = parse_ini_file("config.ini", true/* will scope sectionally */);
 //$ini_xml = parse_ini_file("xml.ini", true /* will scope sectionally */);
@@ -77,6 +79,7 @@ class profis
 //file2 = file_get_contents($file_);
         $row = '';
         $err1 = 0;
+       
         if ($file = fopen($file_, "r")) {
             $ind = 0;
             while (!feof($file)) {
@@ -93,6 +96,11 @@ if ($ind==0) {
 }
 
                 $chk = explode(';', $line);
+              if (strpos($line,'"')){
+                die ("è stato trovato un carattere non valido nella riga <br>".$line);
+
+              }
+              
                 if (sizeof($chk) != 9 && strlen($line) != 0 && $ind >=3) {
                     echo 'ATTENZIONE NUMERO CAMPI ERRATO!!!!<br>' .
                     'I CAMPI PRESENTI SONO :' . sizeof($chk) . '<br> E DOVREBBERO ESSERE 9' . '<br>';

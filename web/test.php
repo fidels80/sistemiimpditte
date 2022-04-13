@@ -129,6 +129,22 @@ return obj;
         }
     }
 }*/
+$line='37625;"SHENZHENSHINUOSIYAELECTRONICCO ;Ltd";Altro;Ditta attiva per AA7 (Inizio/Variaz./Cessaz.Attività - Società);Senza annotazioni;Si;16619271006;16619271006;
+';
+echo $line;
+echo '<br>';
+ print_r(explode(';',$line));
+ echo '<br><br>';
+ $mimmo=explode(';',$line) ;
+ var_dump( sizeof($mimmo));
+ $line='37625; SHENZHENSHINUOSIYAELECTRONICCO  Ltd ;Altro;Ditta attiva per AA7 (Inizio/Variaz./Cessaz.Attività - Società);Senza annotazioni;Si;16619271006;16619271006;
+ ';
+ echo $line;
+ echo '<br>';
+  print_r(explode(';',$line));
+  echo '<br><br>';
+  $mimmo=explode(';',$line) ;
+  var_dump( sizeof($mimmo));
 
 ?>
  
